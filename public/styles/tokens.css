@@ -91,10 +91,12 @@ html, body {
   font-family: var(--font-body);
   background: var(--white);
   color: var(--text-900);
-  min-width: 1440px;
-  overflow-x: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  min-width: 1440px;
+  overflow-x: auto;
 }
 
 /* ----- Display font: applies to all heading elements and
