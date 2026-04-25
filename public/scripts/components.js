@@ -6,11 +6,11 @@
 
 const CARGOZ_NAVBAR_HTML = `
 <div class="inner">
-  <a class="header-logo" href="index.html" aria-label="Cargoz home" style="display:flex;align-items:center;text-decoration:none;">
+  <a class="header-logo" href="/" aria-label="Cargoz home" style="display:flex;align-items:center;text-decoration:none;">
     <img src="https://www.figma.com/api/mcp/asset/a0b9ff07-efeb-42ce-9d6a-88386c92c665" alt="Cargoz" />
   </a>
   <nav class="header-nav">
-    <a class="nav-item" href="listings.html">
+    <a class="nav-item" href="/warehouses">
       <span>See All Warehouses</span>
       <span class="nav-chevron"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1" /></svg></span>
     </a>
@@ -52,7 +52,7 @@ const CARGOZ_FOOTER_HTML = `
     </div>
     <div>
       <div class="footer-col-title">About Cargoz</div>
-      <a href="about.html" class="footer-link">About Us</a>
+      <a href="/about" class="footer-link">About Us</a>
       <a href="#" class="footer-link">How It Works</a>
       <a href="#" class="footer-link">Why Cargoz</a>
       <a href="#" class="footer-link">Contact Us</a>
@@ -60,7 +60,7 @@ const CARGOZ_FOOTER_HTML = `
     <div>
       <div class="footer-col-title">Explore</div>
       <a href="#" class="footer-link">Get Matched</a>
-      <a href="listings.html" class="footer-link">See All Warehouses</a>
+      <a href="/warehouses" class="footer-link">See All Warehouses</a>
       <a href="#" class="footer-link">How to Choose a Warehouse</a>
       <a href="#" class="footer-link">Types of Warehouses</a>
       <a href="#" class="footer-link">Storage Calculator</a>

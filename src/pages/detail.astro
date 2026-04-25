@@ -1006,7 +1006,7 @@
   const crumbs = document.querySelectorAll(".breadcrumb a, .breadcrumb .current");
   if (crumbs.length >= 4) {
     crumbs[1].textContent = `Warehouses in ${w.emirate}`;
-    crumbs[1].href = `listings.html?city=${encodeURIComponent(w.emirate)}`;
+    crumbs[1].href = `/warehouses?city=${encodeURIComponent(w.emirate)}`;
     crumbs[2].textContent = w.area;
     crumbs[3].textContent = `${w.id} in ${w.area}`;
   }
@@ -1351,7 +1351,7 @@
     const eb = document.querySelector(".btn-estimate");
     if (eb) {
       const qs = new URLSearchParams({ id: w.id, size: curSize, unit: sizeUnit, period: periodStr, goodsIntent }).toString();
-      eb.href = `estimate.html?${qs}`;
+      eb.href = `/estimate?${qs}`;
     }
   }
   recompute();
@@ -1417,7 +1417,7 @@
   const estBtn = document.querySelector(".btn-estimate");
   if (estBtn) {
     const qs = new URLSearchParams({ id: w.id, size: sizeInput, unit: sizeUnit, period: period, goodsIntent: goodsIntent }).toString();
-    estBtn.href = `estimate.html?${qs}`;
+    estBtn.href = `/estimate?${qs}`;
   }
 
   /* ----- Nearby — same emirate, exclude current, top 3 ----- */
@@ -1456,7 +1456,7 @@
     if (viewBtn) {
       viewBtn.onclick = () => {
         const qs = new URLSearchParams({ id: nw.id, size: sizeInput, unit: sizeUnit, period, goodsIntent }).toString();
-        location.href = `detail.html?${qs}`;
+        location.href = `/detail?${qs}`;
       };
     }
   });
