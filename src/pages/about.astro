@@ -1,0 +1,1713 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About us — Cargoz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="/styles/tokens.css" />
+<link rel="stylesheet" href="/styles/utilities.css" />
+<style>
+  :root {
+    --primary-500: #40BCAA;
+    --primary-600: #3AAB9B;
+    --green-500: #00B26F;
+    --text-900: #0F172B;
+    --text-700: #314158;
+    --text-500: #62748E;
+    --text-300: #90A1B9;
+    --text-100: #E4E8ED;
+    --text-50: #F5F7FA;
+    --text-25: #F9FBFC;
+    --white: #FFFFFF;
+    --teal-tint-1: #F2FFFE;
+    --teal-tint-2: #F2FAF9;
+    --teal-border: #D0EDE8;
+    --gradient-teal: linear-gradient(135deg, #F2FFFE 0%, #F2FAF9 100%);
+    --shadow-xs: 0 1px 2px rgba(29,41,61,0.05);
+    --shadow-card: 0 1px 3px rgba(29,41,61,0.06), 0 4px 12px rgba(29,41,61,0.04);
+    --shadow-hover: 0 4px 16px rgba(29,41,61,0.1);
+    --shadow-nav: 1px 2px 8px 0 rgba(29,41,61,0.04), -1px 2px 8px 0 rgba(29,41,61,0.04);
+    --shadow-btn: 0 1px 0.5px 0 rgba(29,41,61,0.02);
+    --inner: 1280px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--white);
+    color: var(--text-900);
+    min-width: 1440px;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 35% at 8% 12%, rgba(64,188,170,0.10), transparent 70%),
+      radial-gradient(45% 40% at 92% 22%, rgba(121,87,255,0.07), transparent 70%),
+      radial-gradient(45% 40% at 12% 78%, rgba(121,87,255,0.07), transparent 70%),
+      radial-gradient(40% 35% at 88% 88%, rgba(64,188,170,0.10), transparent 70%);
+  }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+  /* ─── SHARED ──────────────────────────────── */
+  .inner {
+    max-width: var(--inner);
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--primary-500);
+    margin-bottom: 12px;
+  }
+  .eyebrow.light { color: rgba(255,255,255,0.6); }
+  .h1 {
+    font-size: 60px; font-weight: 700;
+    color: var(--text-900);
+    line-height: 1.08;
+    letter-spacing: -1px;
+  }
+  .h2 {
+    font-size: 44px; font-weight: 700;
+    color: var(--text-900);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+  .h2.light { color: var(--white); }
+  .lead {
+    font-size: 18px; font-weight: 400;
+    color: var(--text-500);
+    line-height: 1.65;
+    max-width: 540px;
+  }
+  .lead.light { color: rgba(255,255,255,0.7); }
+
+  /* ─── HEADER (shared across pages) ─────────────────── */
+  .header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: var(--white);
+    box-shadow: var(--shadow-nav);
+    z-index: 100;
+  }
+  .header .inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-logo img { height: 32px; width: 125px; object-fit: contain; display: block; }
+  .header-nav { display: flex; align-items: center; gap: 24px; }
+  .nav-item { display: flex; align-items: center; gap: 4px; cursor: pointer; text-decoration: none; }
+  .nav-item span { font-size: 14px; font-weight: 400; line-height: 20px; letter-spacing: 0.25px; color: var(--text-700); white-space: nowrap; }
+  .nav-chevron { width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .nav-chevron svg { width: 10px; height: 6px; fill: none; stroke: var(--text-700); stroke-width: 1.5; }
+  .header-actions { display: flex; align-items: center; gap: 16px; }
+  .btn-icon { width: 36px; height: 36px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none; padding: 0; }
+  .btn-icon svg { width: 20px; height: 20px; stroke: var(--text-900); fill: none; stroke-width: 1.5; }
+  .btn-login { height: 40px; padding: 0 10px; border-radius: 16px; border: none; background: transparent; font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: 0.25px; color: var(--text-900); cursor: pointer; box-shadow: var(--shadow-btn); white-space: nowrap; }
+  .btn-list { height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--text-100); background: var(--white); font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 600; line-height: 20px; letter-spacing: 0.25px; color: var(--text-900); cursor: pointer; box-shadow: var(--shadow-btn); white-space: nowrap; }
+
+  /* ─── BUTTONS ─────────────────────────────── */
+  .btn-primary {
+    height: 52px; padding: 0 28px;
+    background: var(--primary-500);
+    color: var(--white);
+    border-radius: 14px;
+    font-size: 15px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background .15s;
+  }
+  .btn-primary:hover { background: var(--primary-600); }
+  .btn-secondary {
+    height: 52px; padding: 0 28px;
+    background: var(--white);
+    border: 1.5px solid var(--text-100);
+    color: var(--text-900);
+    border-radius: 14px;
+    font-size: 15px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color .15s;
+  }
+  .btn-secondary:hover { border-color: var(--primary-500); }
+  .btn-dark {
+    height: 52px; padding: 0 28px;
+    background: var(--white);
+    color: var(--text-900);
+    border-radius: 14px;
+    font-size: 15px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-wa {
+    height: 52px; padding: 0 28px;
+    background: var(--green-500);
+    color: var(--white);
+    border-radius: 14px;
+    font-size: 15px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+
+  /* ─── 01 HERO (ClickUp-style scattered portraits) ─── */
+  .sec-hero {
+    background: transparent;
+    padding: 80px 0 80px;
+  }
+  .hero-center {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .hero-h1 {
+    font-size: 76px; font-weight: 700;
+    color: var(--text-900);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin: 0;
+  }
+  .hero-h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #40BCAA 0%, #7957FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .hero-lead {
+    font-size: 20px; color: var(--text-500);
+    line-height: 1.5; max-width: 620px;
+    margin: 0;
+  }
+  .hero-cta-pill {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--text-900);
+    color: var(--white);
+    padding: 14px 24px 14px 14px;
+    border-radius: 100px;
+    font-size: 15px; font-weight: 600;
+    text-decoration: none;
+    transition: background .15s, transform .15s;
+    margin-top: 8px;
+  }
+  .hero-cta-pill:hover {
+    background: #1E293B;
+    transform: translateY(-1px);
+  }
+  .hero-cta-pill .play-dot {
+    width: 28px; height: 28px;
+    background: var(--primary-500);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .portrait-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.4fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 18px;
+    row-gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 56px;
+  }
+  .portrait {
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+  }
+  .portrait.big {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    aspect-ratio: auto;
+    height: 100%;
+    align-self: stretch;
+    border-radius: 24px;
+  }
+  /* ClickUp pattern: cols 2 & 4 drop down, cols 1, 3, 5 stay anchored top */
+  .portrait-grid > .portrait:nth-child(2),
+  .portrait-grid > .portrait:nth-child(4),
+  .portrait-grid > .portrait:nth-child(7),
+  .portrait-grid > .portrait:nth-child(8) {
+    transform: translateY(48px);
+  }
+
+  .hero-trusted {
+    display: flex; align-items: center; gap: 48px;
+    padding-top: 56px;
+    margin-top: 48px;
+    border-top: 1px solid var(--text-100);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-trusted-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text-500);
+    white-space: nowrap;
+  }
+  .hero-trusted-logos {
+    display: flex; align-items: center; gap: 48px;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .hero-trusted-logos span {
+    font-size: 18px; font-weight: 700;
+    color: var(--text-500);
+    opacity: 0.7;
+    letter-spacing: -0.3px;
+  }
+  .hero-img-label {
+    display: none;
+  }
+
+  /* ─── 02 STATS STRIP (Amplitude-style oversized, in card) ─── */
+  .sec-stats {
+    background: transparent;
+    padding: 64px 0;
+  }
+  .stats-card {
+    background: var(--text-25);
+    border: 1px solid var(--text-100);
+    border-radius: 24px;
+    padding: 64px 56px;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+  .stat-block {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 16px;
+    text-align: center;
+    position: relative;
+  }
+  .stat-num {
+    font-size: 88px; font-weight: 700;
+    color: var(--primary-500);
+    line-height: 0.95;
+    letter-spacing: -3.5px;
+  }
+  .stat-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--text-700);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .stat-sub {
+    font-size: 15px;
+    color: var(--text-500);
+    line-height: 1.5;
+    margin-top: -8px;
+    max-width: 240px;
+  }
+
+  /* ─── 03 STORY ────────────────────────────── */
+  .sec-story {
+    background: transparent;
+    padding: 96px 0;
+  }
+  .story-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    text-align: center;
+  }
+  .story-left { display: flex; flex-direction: column; gap: 48px; }
+  .story-right { display: flex; flex-direction: column; gap: 48px; }
+
+  .story-heading-block {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 20px; max-width: 720px;
+  }
+  .story-heading-block .h2 {
+    font-size: 56px; line-height: 1.05;
+    letter-spacing: -1.5px;
+    text-align: center;
+  }
+  .story-heading-block .h2 em {
+    font-style: normal;
+    color: var(--primary-500);
+  }
+  .story-heading-block .lead {
+    max-width: 560px !important;
+    text-align: center;
+    font-size: 18px;
+  }
+  .story-proof-row {
+    display: flex; gap: 32px;
+    padding: 20px 0 4px;
+    border-top: 1px solid var(--text-100);
+  }
+  .story-proof-item { display: flex; flex-direction: column; gap: 2px; }
+  .story-proof-num {
+    font-size: 28px; font-weight: 700;
+    color: var(--primary-500);
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .story-proof-label {
+    font-size: 12px; color: var(--text-500);
+    font-weight: 500;
+  }
+
+  .story-chunks {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .story-chunk {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    padding: 24px 0;
+    border-top: 1px solid var(--text-100);
+    align-items: start;
+  }
+  .story-chunk:last-child { border-bottom: 1px solid var(--text-100); }
+  .story-chunk-num {
+    font-size: 32px; font-weight: 700;
+    color: var(--primary-500);
+    line-height: 1;
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
+    padding-top: 2px;
+  }
+  .story-chunk-body-wrap {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .story-chunk-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-500);
+  }
+  .story-chunk-title {
+    font-size: 22px; font-weight: 700;
+    color: var(--text-900); line-height: 1.3;
+  }
+  .story-chunk-body {
+    font-size: 15px; color: var(--text-500);
+    line-height: 1.65;
+    margin-top: 4px;
+  }
+
+  .story-right { display: flex; flex-direction: column; gap: 28px; }
+  .pull-quote {
+    background: none;
+    border: none;
+    padding: 40px 0 0;
+    max-width: 900px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 20px;
+    position: relative;
+  }
+  .pull-quote-mark {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    font-family: Georgia, serif;
+    font-size: 240px;
+    line-height: 1;
+    color: var(--primary-500);
+    opacity: 0.15;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .pull-quote-text {
+    position: relative; z-index: 1;
+    font-size: 40px; font-weight: 600;
+    color: var(--text-900);
+    line-height: 1.3; font-style: italic;
+    letter-spacing: -0.5px;
+    margin: 0;
+    text-align: center;
+  }
+  .pull-quote-cite {
+    font-size: 13px; color: var(--text-500);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .pull-quote-cite::before { display: none; }
+
+  /* Funding timeline */
+  .investors-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 960px;
+  }
+  .timeline-head {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text-500);
+    margin: 0;
+  }
+  .funding-timeline {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    position: relative;
+  }
+  .timeline-item {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    position: relative;
+  }
+  /* Horizontal line between dots */
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 50%; right: 0;
+    height: 2px;
+    background: var(--teal-border);
+    z-index: 0;
+  }
+  .timeline-item:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: 50%; left: 0;
+    height: 2px;
+    background: var(--teal-border);
+    z-index: 0;
+  }
+  .timeline-left {
+    display: flex; justify-content: center;
+    position: relative; z-index: 1;
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+  }
+  .timeline-dot {
+    width: 16px; height: 16px;
+    background: var(--white);
+    border-radius: 50%;
+    border: 3px solid var(--primary-500);
+    box-shadow: 0 0 0 4px var(--white);
+    position: relative; z-index: 1;
+  }
+  .timeline-line { display: none; }
+  .timeline-content {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 6px;
+  }
+  .timeline-date {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--primary-500);
+  }
+  .timeline-title {
+    font-size: 18px; font-weight: 700;
+    color: var(--text-900);
+    letter-spacing: -0.2px;
+  }
+  .timeline-by {
+    font-size: 13px; color: var(--text-500);
+  }
+  .investor-chip {
+    display: inline-flex; align-items: center;
+    font-size: 12px; font-weight: 600;
+    color: var(--text-700);
+    background: var(--white);
+    border: 1px solid var(--text-100);
+    border-radius: 100px;
+    padding: 5px 12px;
+    margin-top: 4px;
+    align-self: flex-start;
+  }
+
+  .linkedin-row { display: flex; gap: 12px; }
+  .linkedin-btn {
+    flex: 1;
+    height: 60px;
+    background: var(--white);
+    border: 1px solid var(--text-100);
+    border-radius: 14px;
+    padding: 0 18px;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: var(--shadow-xs);
+    color: var(--text-900);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .linkedin-btn:hover {
+    border-color: var(--primary-500);
+    box-shadow: var(--shadow-card);
+  }
+  .li-icon {
+    width: 36px; height: 36px;
+    background: #0A66C2;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 14px;
+    flex-shrink: 0;
+  }
+  .li-meta { flex: 1; }
+  .li-name { font-size: 14px; font-weight: 700; color: var(--text-900); }
+  .li-role { font-size: 12px; color: var(--text-500); margin-top: 1px; }
+  .li-arrow { color: var(--text-300); }
+
+  /* ─── 04 FOUNDERS PHOTOS ──────────────────── */
+  .sec-founders {
+    background: transparent;
+    padding: 96px 0;
+  }
+  .duo-strip {
+    width: 100%;
+    height: 440px;
+    background: linear-gradient(145deg, #D4F0EB, #9BDDD3);
+    border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .duo-strip::before {
+    content: '';
+    position: absolute; inset: 24px;
+    border: 1.5px dashed rgba(255,255,255,0.5);
+    border-radius: 16px;
+  }
+  .photo-label {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(6px);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px; font-weight: 600;
+    color: var(--text-700); z-index: 1;
+  }
+  /* People grid — all 4 in equal columns */
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+  .person-card {
+    border-radius: 20px;
+    padding: 16px 16px 24px;
+    display: flex; flex-direction: column;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .person-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(15,23,43,0.1);
+  }
+  .person-card.is-founder {
+    background: var(--white);
+    border: 1px solid var(--text-100);
+  }
+  .person-card.is-leader {
+    background: var(--white);
+    border: 1px solid var(--text-100);
+  }
+  .person-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    background-color: var(--text-25);
+  }
+  .founder-role-chip {
+    align-self: flex-start;
+    background: var(--white);
+    color: var(--primary-600);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--teal-border);
+    margin-top: 16px;
+  }
+  .is-leader .founder-role-chip {
+    background: var(--text-25);
+    color: var(--text-500);
+    border-color: var(--text-100);
+  }
+  .founder-name {
+    font-size: 20px; font-weight: 700;
+    color: var(--text-900); line-height: 1.2;
+    margin-top: 8px;
+  }
+  .founder-bio {
+    font-size: 13px; color: var(--text-500);
+    line-height: 1.6; margin-top: 8px;
+  }
+  .founder-li {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 14px;
+    padding: 8px 14px;
+    background: var(--white);
+    border: 1px solid var(--teal-border);
+    border-radius: 100px;
+    color: var(--text-900);
+    text-decoration: none;
+    font-size: 12px; font-weight: 600;
+    align-self: flex-start;
+    transition: border-color .15s, color .15s;
+  }
+  .founder-li:hover { border-color: var(--primary-500); color: var(--primary-600); }
+
+  /* keep old selectors as aliases so nothing breaks */
+  .founder-cards, .leaders-row { display: none; }
+  .founder-card, .leader-card, .leader-photo, .leader-info,
+  .leader-role, .leader-name, .leader-meta { display: none; }
+
+  /* ─── 05 TEAM (polaroid fan) ─────────────── */
+  .sec-team {
+    background: transparent;
+    padding: 96px 0 120px;
+  }
+  .team-polaroids {
+    position: relative;
+    height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .polaroid {
+    position: absolute;
+    background: var(--white);
+    padding: 18px 18px 0;
+    box-shadow: 0 16px 40px rgba(15,23,43,0.14), 0 4px 12px rgba(15,23,43,0.08);
+    width: 580px;
+    border-radius: 2px;
+    transition: transform .3s ease, box-shadow .3s ease, z-index 0s;
+    cursor: pointer;
+  }
+  .polaroid:hover {
+    z-index: 20;
+    box-shadow: 0 24px 60px rgba(15,23,43,0.22), 0 8px 24px rgba(15,23,43,0.12);
+  }
+  .polaroid-photo {
+    width: 544px;
+    height: 360px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--text-50);
+  }
+  .polaroid-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 6px 22px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-900);
+  }
+  .polaroid-date {
+    color: var(--text-500);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  /* Fan positioning — 2 polaroids */
+  .team-polaroids { height: 560px; }
+  .polaroid:nth-child(1) {
+    transform: translateX(-310px) rotate(-5deg);
+    z-index: 1;
+  }
+  .polaroid:nth-child(1):hover {
+    transform: translateX(-310px) rotate(-2deg) translateY(-12px);
+  }
+  .polaroid:nth-child(2) {
+    transform: translateX(310px) rotate(5deg);
+    z-index: 2;
+  }
+  .polaroid:nth-child(2):hover {
+    transform: translateX(310px) rotate(2deg) translateY(-12px);
+  }
+
+  /* ─── 06 INVESTORS ────────────────────────── */
+  .sec-investors {
+    background: transparent;
+    padding: 96px 0;
+  }
+  .investor-lead {
+    background: var(--gradient-teal);
+    border: 1px solid var(--teal-border);
+    border-radius: 20px;
+    padding: 32px 36px;
+    display: flex; align-items: center; gap: 32px;
+    margin-bottom: 20px;
+  }
+  .investor-lead-logo {
+    width: 180px; height: 72px;
+    background: var(--white);
+    border: 1px solid var(--text-100);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700;
+    color: var(--text-700);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-xs);
+  }
+  .investor-lead-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .investor-badge {
+    background: var(--primary-500);
+    color: var(--white);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    width: fit-content;
+  }
+  .investor-title {
+    font-size: 20px; font-weight: 700; color: var(--text-900);
+  }
+  .investor-sub {
+    font-size: 14px; color: var(--text-500);
+  }
+  .investor-ext {
+    width: 40px; height: 40px;
+    border: 1px solid var(--text-100);
+    border-radius: 12px;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-500); flex-shrink: 0;
+  }
+  .investor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .investor-logo-card {
+    background: var(--white);
+    border: 1px solid var(--text-100);
+    border-radius: 16px;
+    height: 100px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 4px;
+    font-size: 15px; font-weight: 700;
+    color: var(--text-700);
+    position: relative;
+    transition: border-color .15s, box-shadow .15s;
+    cursor: pointer;
+  }
+  .investor-logo-card:hover {
+    border-color: var(--primary-500);
+    box-shadow: var(--shadow-card);
+  }
+  .investor-logo-card span {
+    font-size: 12px; font-weight: 400;
+    color: var(--text-500);
+  }
+  .investor-logo-card svg {
+    position: absolute; top: 12px; right: 12px;
+    color: var(--text-300);
+  }
+
+  /* ─── 07 PODCASTS ─────────────────────────── */
+  .sec-podcasts {
+    background: transparent;
+    padding: 96px 0;
+  }
+  .sec-podcasts .eyebrow.light { color: var(--primary-500); }
+  .sec-podcasts .h2.light { color: var(--text-900); }
+  .podcasts-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+  }
+  .video-featured {
+    height: 400px;
+    background: linear-gradient(135deg, #1A2035, #1E293B);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex; align-items: flex-end;
+    padding: 28px;
+  }
+  .video-featured::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.7) 100%);
+  }
+  .video-play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -65%);
+    width: 72px; height: 72px;
+    background: rgba(255,255,255,0.96);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .video-meta-featured {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .video-tag {
+    font-size: 11px; font-weight: 700;
+    color: var(--primary-500);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .video-title {
+    font-size: 22px; font-weight: 700;
+    color: var(--white); line-height: 1.3;
+  }
+  .video-dur {
+    font-size: 13px; color: rgba(255,255,255,0.55);
+  }
+  .video-stack { display: flex; flex-direction: column; }
+  .video-card-small {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(64,188,170,0.3);
+    border-radius: 0;
+    padding: 24px 4px;
+    display: flex; gap: 24px; align-items: center;
+    cursor: pointer;
+    transition: opacity .15s;
+    flex: 1;
+  }
+  .video-card-small:first-child { padding-top: 0; }
+  .video-card-small:last-child { border-bottom: none; padding-bottom: 0; }
+  .video-card-small:hover { opacity: 0.7; }
+  .vid-thumb {
+    width: 100px; height: 68px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+  }
+  .vid-thumb-play {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.25);
+  }
+  .vid-meta { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .vid-title { font-size: 16px; font-weight: 600; color: var(--text-900); line-height: 1.35; }
+  .vid-date { font-size: 12px; color: var(--text-500); letter-spacing: 0.2px; }
+  .vid-arrow {
+    color: var(--text-500);
+    transition: transform .2s, color .2s;
+    flex-shrink: 0;
+  }
+  .video-card-small:hover .vid-arrow {
+    color: var(--primary-500);
+    transform: translateX(4px);
+  }
+
+  /* Featured host overlay */
+  .video-host {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 8px;
+  }
+  .video-host-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255,255,255,0.9);
+  }
+  .video-host-name {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+  }
+  .video-host-name strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  /* Section footer */
+  .podcasts-footer {
+    margin-top: 40px;
+    display: flex; justify-content: flex-end;
+  }
+  .podcasts-footer a {
+    font-size: 14px; font-weight: 600;
+    color: var(--primary-600);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: gap .2s;
+  }
+  .podcasts-footer a:hover { gap: 12px; }
+
+  /* ─── 08 PARTNERSHIPS (Editorial split hero) ─── */
+  .sec-partners {
+    background: transparent;
+    padding: 96px 0;
+  }
+  .partner-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .partner-img {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    border-radius: 24px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .partner-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(15,23,43,0.35) 100%);
+  }
+  .partner-img-tag {
+    position: absolute; left: 20px; bottom: 20px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    color: var(--text-900);
+    z-index: 1;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .partner-img-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--primary-500);
+  }
+  .partner-deal {
+    display: flex; flex-direction: column; gap: 28px;
+    background: var(--text-25);
+    border: 1px solid var(--text-100);
+    border-radius: 24px;
+    padding: 48px;
+  }
+  .partner-lockup {
+    display: flex; align-items: center; gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--teal-border);
+  }
+  .partner-logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+  .partner-logo-img.is-meydan { height: 36px; }
+  .partner-x {
+    font-size: 20px; font-weight: 300;
+    color: var(--text-500);
+  }
+  .partner-tagline {
+    font-size: 32px; font-weight: 700;
+    color: var(--text-900);
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+  }
+  .partner-tagline em {
+    font-style: normal;
+    color: var(--primary-500);
+  }
+  .partner-desc {
+    font-size: 15px;
+    color: var(--text-500);
+    line-height: 1.65;
+  }
+  .partner-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 28px 0;
+    border-top: 1px solid var(--text-100);
+    border-bottom: 1px solid var(--text-100);
+  }
+  .spec-block {
+    display: flex; flex-direction: column;
+    gap: 8px;
+  }
+  .spec-val {
+    font-size: 40px; font-weight: 700;
+    color: var(--primary-500);
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+  .spec-lbl {
+    font-size: 13px;
+    color: var(--text-500);
+    line-height: 1.45;
+  }
+  .partner-trust {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px;
+    color: var(--text-500);
+    letter-spacing: 0.2px;
+  }
+  .partner-trust strong {
+    color: var(--text-900);
+    font-weight: 600;
+  }
+  .partner-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .partner-box {
+    background: var(--text-25);
+    border: 1px solid var(--text-100);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .partner-box-title { font-size: 18px; font-weight: 700; color: var(--text-900); }
+  .partner-box-body { font-size: 15px; color: var(--text-500); line-height: 1.6; }
+  .partner-highlight { font-size: 14px; color: var(--primary-600); font-weight: 600; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .tag {
+    background: var(--white);
+    border: 1px solid var(--text-100);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 13px; font-weight: 600;
+    color: var(--text-700);
+  }
+  .cta-center { display: flex; justify-content: center; }
+
+  /* ─── 09 PUBLICATIONS ─────────────────────── */
+  .sec-publications {
+    background: transparent;
+    padding: 64px 0;
+  }
+  .pub-bar {
+    display: flex; align-items: center; gap: 40px;
+  }
+  .pub-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--text-300); white-space: nowrap;
+  }
+  .pub-divider { width: 1px; height: 32px; background: var(--text-100); flex-shrink: 0; }
+  .pub-logos {
+    flex: 1;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .pub-logo {
+    font-size: 15px; font-weight: 700;
+    color: var(--text-300);
+    filter: grayscale(1) opacity(0.5);
+    transition: filter .2s, color .2s;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .pub-logo:hover { filter: none; color: var(--text-700); }
+
+  /* ─── 10 PRESS ────────────────────────────── */
+  .sec-press {
+    background: transparent;
+    padding: 96px 0;
+  }
+  .press-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 48px;
+  }
+  .link-ghost {
+    font-size: 14px; font-weight: 700;
+    color: var(--primary-500);
+    display: flex; align-items: center; gap: 6px;
+    transition: gap .15s;
+  }
+  .link-ghost:hover { gap: 10px; }
+  .press-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .press-card {
+    background: var(--white);
+    border: 1px solid var(--text-100);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex; flex-direction: column;
+    gap: 16px; min-height: 196px;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+    cursor: pointer;
+  }
+  .press-card:hover {
+    border-color: var(--primary-500);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+  .press-card-top { display: flex; justify-content: space-between; align-items: center; }
+  .press-pub {
+    font-size: 11px; font-weight: 700;
+    color: var(--primary-500);
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .press-arrow { color: var(--text-300); }
+  .press-headline {
+    font-size: 17px; font-weight: 600;
+    color: var(--text-900); line-height: 1.45;
+    flex: 1;
+  }
+  .press-date { font-size: 13px; color: var(--text-500); }
+
+  /* ─── 11 CLOSING CTA ──────────────────────── */
+  .sec-cta {
+    background: #0F172B;
+    padding: 96px 0;
+  }
+  .cta-block {
+    display: flex; justify-content: space-between;
+    align-items: center; gap: 48px;
+  }
+  .cta-text { display: flex; flex-direction: column; gap: 10px; }
+  .cta-title {
+    font-size: 48px; font-weight: 700;
+    color: var(--white); line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+  .cta-sub { font-size: 18px; color: rgba(255,255,255,0.6); }
+  .cta-actions { display: flex; gap: 12px; flex-shrink: 0; }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  .footer {
+    background: var(--text-900);
+    padding: 80px 0 32px;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr 1.2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+  .footer-logo {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 28px; font-weight: 700; color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .footer-logo .logo-mark {
+    width: 32px; height: 32px;
+  }
+  .footer-tagline {
+    font-size: 16px; color: rgba(255,255,255,0.55);
+    line-height: 1.5; max-width: 260px;
+  }
+  .footer-cities {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    max-width: 280px;
+  }
+  .footer-city-chip {
+    display: inline-flex; align-items: center;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 14px; color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: border-color .12s, background .12s, color .12s;
+  }
+  .footer-city-chip:hover {
+    border-color: var(--primary-500);
+    background: rgba(64,188,170,0.1);
+    color: var(--white);
+  }
+  .footer-col-title {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 24px;
+  }
+  .footer-link {
+    display: block;
+    font-size: 16px; color: rgba(255,255,255,0.75);
+    padding: 8px 0;
+    text-decoration: none;
+    transition: color .12s;
+  }
+  .footer-link:hover { color: var(--primary-500); }
+
+  .footer-divider {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 0;
+  }
+
+  .footer-browse {
+    padding: 40px 0;
+  }
+  .footer-browse-title {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 20px;
+  }
+  .footer-browse-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .footer-select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 52px;
+    padding: 0 44px 0 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: var(--white);
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='rgba(255,255,255,0.6)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    transition: border-color .12s, background .12s;
+  }
+  .footer-select option {
+    background: var(--text-900);
+    color: var(--white);
+  }
+  .footer-select:hover {
+    border-color: var(--primary-500);
+    background: rgba(64,188,170,0.06);
+  }
+  .footer-select:focus {
+    outline: none;
+    border-color: var(--primary-500);
+  }
+
+  .footer-bottom {
+    padding-top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px; color: rgba(255,255,255,0.45);
+  }
+  .footer-legal {
+    display: flex; gap: 32px;
+  }
+  .footer-legal a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color .12s;
+  }
+  .footer-legal a:hover { color: var(--white); }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ──────────────────────────── -->
+<header class="header" data-cargoz-component="navbar"></header>
+
+<!-- ─── 01 HERO (ClickUp-style) ───────── -->
+<section class="sec-hero">
+  <div class="inner">
+    <div class="hero-center">
+      <div class="eyebrow">Built for the GCC</div>
+      <h1 class="hero-h1">We are <em>Cargoz.</em></h1>
+      <p class="hero-lead">The warehouse marketplace connecting businesses to flexible storage across UAE and Saudi Arabia.</p>
+    </div>
+
+    <div class="portrait-grid">
+      <div class="portrait offset-down" style="background-color:#FFE0E6; background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=420&h=500&fit=crop&q=80');"></div>
+      <div class="portrait offset-up"   style="background-color:#E3EAFD; background-image:url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=420&h=500&fit=crop&q=80');"></div>
+      <div class="portrait big"         style="background-color:#F2FFFE; background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&h=900&fit=crop&q=80');"></div>
+      <div class="portrait offset-up"   style="background-color:#EDE7FD; background-image:url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=420&h=500&fit=crop&q=80');"></div>
+      <div class="portrait offset-down" style="background-color:#FDF0E1; background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=420&h=500&fit=crop&q=80');"></div>
+      <div class="portrait offset-up"   style="background-color:#FCE8F4; background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=420&h=500&fit=crop&q=80');"></div>
+      <div class="portrait offset-down" style="background-color:#DFF3EE; background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=420&h=500&fit=crop&q=80');"></div>
+      <div class="portrait offset-down" style="background-color:#E8F0FF; background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=420&h=500&fit=crop&q=80');"></div>
+      <div class="portrait offset-up"   style="background-color:#FFF4E3; background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=420&h=500&fit=crop&q=80');"></div>
+    </div>
+
+    <div class="hero-trusted">
+      <span class="hero-trusted-label">Trusted by the best</span>
+      <div class="hero-trusted-logos">
+        <span>Coca-Cola</span>
+        <span>Noon</span>
+        <span>Geepas</span>
+        <span>Hilton</span>
+        <span>Starlinks</span>
+        <span>Sera</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 02 STATS STRIP ─────────────────── -->
+<section class="sec-stats">
+  <div class="inner">
+    <div class="stats-card">
+      <div class="stats-row">
+        <div class="stat-block">
+          <div class="stat-num">2,000+</div>
+          <div class="stat-label">businesses served</div>
+          <div class="stat-sub">across UAE & KSA</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">1.5M+</div>
+          <div class="stat-label">sq ft listed</div>
+          <div class="stat-sub">active warehouse space</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">5.0</div>
+          <div class="stat-label">Google rating</div>
+          <div class="stat-sub">2,000+ reviews</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 03 FOUNDER STORY ───────────────── -->
+<section class="sec-story">
+  <div class="inner">
+    <div class="story-layout">
+      <div class="story-heading-block">
+        <div class="eyebrow">Our Story</div>
+        <h2 class="h2">How Cargoz <em>started.</em></h2>
+        <p class="lead" style="max-width:none; margin-top:4px; white-space:nowrap;">SMEs struggling under yearly leases · warehouse operators sitting on empty capacity</p>
+      </div>
+
+      <div class="pull-quote">
+        <div class="pull-quote-mark">"</div>
+        <div class="pull-quote-text">Every unused square foot is a cost. We just made that cost disappear.</div>
+        <div class="pull-quote-cite">Premlal Pullisserry, The National · 2024</div>
+      </div>
+
+      <div class="investors-wrap">
+        <div class="timeline-head">Our Investors</div>
+        <div class="funding-timeline">
+          <div class="timeline-item">
+            <div class="timeline-left"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Aug 2022 · Pre-seed</div>
+              <div class="timeline-title">Nama Ventures</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-left"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2023 · Bridge</div>
+              <div class="timeline-title">RAZ Group</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-left"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Jan 2024 · Seed</div>
+              <div class="timeline-title">RAZ Group + Innovest Properties</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 04 FOUNDERS PHOTOS ─────────────── -->
+<section class="sec-founders">
+  <div class="inner">
+    <div style="margin-bottom:40px;">
+      <div class="eyebrow">Meet the Founders</div>
+      <h2 class="h2">The people behind Cargoz</h2>
+    </div>
+
+
+
+    <div class="people-grid">
+      <div class="person-card is-founder">
+        <div class="person-photo" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop&q=80');"></div>
+        <span class="founder-role-chip">Co-Founder & CEO</span>
+        <div class="founder-name">Premlal Pullisserry</div>
+        <p class="founder-bio">20+ years in GCC warehousing. Ex-founder of Boxit Storage. Has seen the warehouse market from every angle.</p>
+        <a href="#" class="founder-li">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="person-card is-founder">
+        <div class="person-photo" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop&q=80');"></div>
+        <span class="founder-role-chip">Co-Founder & CTO</span>
+        <div class="founder-name">Lijo Antony</div>
+        <p class="founder-bio">14+ years in software. Ex-Nokia and one.com. Built the platform that made flexible warehousing possible at scale.</p>
+        <a href="#" class="founder-li">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="person-card is-leader">
+        <div class="person-photo" style="background-image:url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=800&fit=crop&q=80');"></div>
+        <span class="founder-role-chip">Director · UAE</span>
+        <div class="founder-name">Puneeth</div>
+        <p class="founder-bio">Heads operations and commercial growth across UAE. Scaled warehouse onboarding from 10 to 1,000+.</p>
+        <a href="#" class="founder-li">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+      <div class="person-card is-leader">
+        <div class="person-photo" style="background-image:url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=800&fit=crop&q=80');"></div>
+        <span class="founder-role-chip">Regional Manager · KSA</span>
+        <div class="founder-name">Mahmoud</div>
+        <p class="founder-bio">Leads Cargoz's Saudi Arabia expansion from Riyadh. 12+ years in GCC logistics and supply chain.</p>
+        <a href="#" class="founder-li">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 05 TEAM ────────────────────────── -->
+<section class="sec-team">
+  <div class="inner">
+    <div style="margin-bottom:40px;">
+      <div class="eyebrow">Our Team</div>
+      <h2 class="h2">Present across<br/>UAE and Saudi Arabia</h2>
+      <p class="lead" style="margin-top:12px;">Headquartered in Dubai Silicon Oasis, with a growing Riyadh office led by Premlal PK.</p>
+    </div>
+
+    <div class="team-polaroids">
+      <div class="polaroid">
+        <div class="polaroid-photo" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=800&fit=crop&q=80');"></div>
+        <div class="polaroid-caption">
+          <span>🇦🇪 UAE TEAM · DUBAI</span>
+          <span class="polaroid-date">~30 STAFF</span>
+        </div>
+      </div>
+      <div class="polaroid">
+        <div class="polaroid-photo" style="background-image:url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&h=800&fit=crop&q=80');"></div>
+        <div class="polaroid-caption">
+          <span>🇸🇦 KSA TEAM · RIYADH</span>
+          <span class="polaroid-date">2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 06 INVESTORS ───────────────────── -->
+
+<!-- ─── 07 PODCASTS ────────────────────── -->
+<section class="sec-podcasts">
+  <div class="inner">
+    <div style="margin-bottom:40px;">
+      <div class="eyebrow light">Podcasts & Videos</div>
+      <h2 class="h2 light">Hear directly from<br/>our founders</h2>
+    </div>
+
+    <div class="podcasts-grid">
+      <div class="video-featured" style="background:url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&h=800&fit=crop&q=80') center/cover no-repeat;">
+        <div class="video-play">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#0F172B"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="video-meta-featured">
+          <div class="video-tag">Feature Interview</div>
+          <div class="video-title">The 300% growth story</div>
+          <div class="video-dur">Nov 2025 · 28 min</div>
+          <div class="video-host">
+            <div class="video-host-avatar" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&q=80');"></div>
+            <div class="video-host-name">With <strong>Premlal Pullisserry</strong>, Co-Founder & CEO</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-stack">
+        <a href="#" class="video-card-small">
+          <div class="vid-thumb" style="background-image:url('https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=200&h=140&fit=crop&q=80');">
+            <div class="vid-thumb-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="vid-meta">
+            <div class="vid-title">Rising Sharjah — Building logistics infrastructure</div>
+            <div class="vid-date">Apr 2025 · 18 min</div>
+          </div>
+          <svg class="vid-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="video-card-small">
+          <div class="vid-thumb" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=140&fit=crop&q=80');">
+            <div class="vid-thumb-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="vid-meta">
+            <div class="vid-title">Meydan Free Zone talk — Free-zone partnerships</div>
+            <div class="vid-date">Oct 2025 · 22 min</div>
+          </div>
+          <svg class="vid-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="video-card-small">
+          <div class="vid-thumb" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=200&h=140&fit=crop&q=80');">
+            <div class="vid-thumb-play"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="vid-meta">
+            <div class="vid-title">The Fawri funding round — Inside the Series A</div>
+            <div class="vid-date">Nov 2025 · 15 min</div>
+          </div>
+          <svg class="vid-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="podcasts-footer">
+      <a href="#">
+        View all episodes
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 08 PARTNERSHIPS ────────────────── -->
+<section class="sec-partners">
+  <div class="inner">
+    <div class="partner-split">
+      <div class="partner-img" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&h=1100&fit=crop&q=80');">
+        <div class="partner-img-tag">Signed January 2026</div>
+      </div>
+
+      <div class="partner-deal">
+        <div class="partner-lockup">
+          <img class="partner-logo-img is-meydan" src="/assets/meydan logo.webp" alt="Meydan Free Zone"/>
+          <span class="partner-x">×</span>
+          <img class="partner-logo-img" src="/assets/cargoz-logo 1.svg" alt="Cargoz"/>
+        </div>
+
+        <h3 class="partner-tagline">Every Meydan license holder gets direct access to <em>800+ warehouses</em> across the GCC.</h3>
+
+        <p class="partner-desc">A first-of-its-kind partnership giving every Meydan-licensed business exclusive pricing, faster move-in windows, and a single point of contact for storage across the UAE and Saudi Arabia.</p>
+
+        <div class="partner-specs">
+          <div class="spec-block">
+            <div class="spec-val">48 hrs</div>
+            <div class="spec-lbl">guaranteed move-in window</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-val">20%</div>
+            <div class="spec-lbl">off standard listed rates</div>
+          </div>
+          <div class="spec-block">
+            <div class="spec-val">800+</div>
+            <div class="spec-lbl">partner warehouses across UAE & KSA</div>
+          </div>
+        </div>
+
+        <div class="partner-trust">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-500);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span><strong>Verified partnership</strong> · Active since 2024</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── 09 PUBLICATIONS ────────────────── -->
+<section class="sec-publications">
+  <div class="inner">
+    <div class="pub-bar">
+      <span class="pub-label">As seen in</span>
+      <div class="pub-divider"></div>
+      <div class="pub-logos">
+        <span class="pub-logo">The National</span>
+        <span class="pub-logo">Wamda</span>
+        <span class="pub-logo">Arab News</span>
+        <span class="pub-logo">Zawya</span>
+        <span class="pub-logo">MAGNiTT</span>
+        <span class="pub-logo">Khaleej Times</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 10 PRESS ───────────────────────── -->
+<section class="sec-press">
+  <div class="inner">
+    <div class="press-header">
+      <div>
+        <div class="eyebrow">In The News</div>
+        <h2 class="h2">Press coverage</h2>
+      </div>
+      <a href="#" class="link-ghost">
+        View all press
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="press-grid">
+      <a href="#" class="press-card">
+        <div class="press-card-top">
+          <span class="press-pub">Meydan Free Zone</span>
+          <svg class="press-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+        <p class="press-headline">Meydan FZ × Cargoz partnership launches for all license holders</p>
+        <div class="press-date">Jan 2026</div>
+      </a>
+      <a href="#" class="press-card">
+        <div class="press-card-top">
+          <span class="press-pub">The National</span>
+          <svg class="press-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+        <p class="press-headline">"Airbnb for warehouses" sees surge in demand across Dubai</p>
+        <div class="press-date">Jun 2024</div>
+      </a>
+      <a href="#" class="press-card">
+        <div class="press-card-top">
+          <span class="press-pub">Wamda</span>
+          <svg class="press-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+        <p class="press-headline">Cargoz raises seed funding to accelerate KSA expansion</p>
+        <div class="press-date">Jan 2024</div>
+      </a>
+      <a href="#" class="press-card">
+        <div class="press-card-top">
+          <span class="press-pub">Zawya</span>
+          <svg class="press-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+        <p class="press-headline">Cargoz expands into Saudi Arabia with Riyadh launch</p>
+        <div class="press-date">Jan 2024</div>
+      </a>
+      <a href="#" class="press-card">
+        <div class="press-card-top">
+          <span class="press-pub">Arab News</span>
+          <svg class="press-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+        <p class="press-headline">Nama & RAZ Group lead funding for GCC logistics startup</p>
+        <div class="press-date">2023</div>
+      </a>
+      <a href="#" class="press-card">
+        <div class="press-card-top">
+          <span class="press-pub">MAGNiTT</span>
+          <svg class="press-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </div>
+        <p class="press-headline">Cargoz secures pre-seed for GCC storage marketplace</p>
+        <div class="press-date">Aug 2022</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 11 CLOSING CTA ─────────────────── -->
+<!-- ─── FOOTER ──────────────────────────── -->
+<footer class="footer" data-cargoz-component="footer"></footer>
+
+<script is:inline src="/scripts/components.js"></script>
+</body>
+</html>

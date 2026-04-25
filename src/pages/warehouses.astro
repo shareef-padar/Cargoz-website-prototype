@@ -1,0 +1,1656 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>321 Warehouses in Dubai — Cargoz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/utilities.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary-500: #7957FF;
+      --secondary-500: #40BCAA;
+      --secondary-600: #3AAB9B;
+      --text-900: #0F172B;
+      --text-700: #314158;
+      --text-500: #62748E;
+      --text-200: #CDD5DF;
+      --text-100: #E4E8ED;
+      --bg-50: #F8FAFC;
+      --white: #FFFFFF;
+      --star: #F59E0B;
+      --shadow-nav: 1px 2px 8px rgba(29,41,61,0.04), -1px 2px 8px rgba(29,41,61,0.04);
+      --shadow-card: 0px 1px 4px rgba(29,41,61,0.06);
+      --shadow-btn: 0px 1px 0.5px rgba(29,41,61,0.02);
+    }
+
+    .inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    html, body {
+      font-family: 'Lato', sans-serif;
+      background: var(--bg-50);
+      color: var(--text-900);
+      min-width: 1440px;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────── */
+    .header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 80px;
+      background: var(--white);
+      box-shadow: var(--shadow-nav);
+      z-index: 100;
+    }
+    .header .inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo img {
+      height: 32px;
+      width: 125px;
+      object-fit: contain;
+      display: block;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-item span {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: var(--text-700);
+      white-space: nowrap;
+    }
+    .nav-chevron {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-chevron svg {
+      width: 10px;
+      height: 6px;
+      fill: none;
+      stroke: var(--text-700);
+      stroke-width: 1.5;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+    .btn-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-900);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .btn-login {
+      height: 40px;
+      padding: 0 10px;
+      border-radius: 16px;
+      border: none;
+      background: transparent;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: var(--text-900);
+      cursor: pointer;
+      box-shadow: var(--shadow-btn);
+      white-space: nowrap;
+    }
+    .btn-list {
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 12px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: var(--text-900);
+      cursor: pointer;
+      box-shadow: var(--shadow-btn);
+      white-space: nowrap;
+    }
+
+    /* ─── SEARCH STRIP ───────────────────────────────────── */
+    .search-strip {
+      padding: 24px 0;
+    }
+    .search-strip .inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .search-pill {
+      flex: 1;
+      max-width: 580px;
+      height: 52px;
+      background: var(--white);
+      border: 1px solid var(--text-100);
+      border-radius: 14px;
+      box-shadow: var(--shadow-nav);
+      display: flex;
+      align-items: center;
+      padding-right: 8px;
+    }
+
+    .search-field {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+    }
+
+    .search-field-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      color: var(--secondary-500);
+    }
+
+    .search-field-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--secondary-500);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .search-field-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+    }
+
+    .search-field-label {
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 14px;
+      letter-spacing: 0.4px;
+      color: var(--text-500);
+    }
+
+    .search-field-value {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .search-field-value span {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: var(--text-900);
+      white-space: nowrap;
+    }
+
+    .search-field-value svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--text-700);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .search-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--text-100);
+      flex-shrink: 0;
+    }
+
+    .search-strip-btn {
+      height: 44px;
+      padding: 0 20px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(156deg, var(--secondary-500) 0%, var(--secondary-600) 100%);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .search-strip-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .page-body {
+      padding: 24px 0;
+    }
+    .page-body .inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    /* ─── SIDEBAR ─────────────────────────────────────────── */
+    .sidebar {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .filter-panel {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .filter-title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+      color: var(--text-900);
+    }
+
+    .filter-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .filter-section-label {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 18px;
+      color: var(--text-900);
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-chip {
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.3px;
+      color: var(--text-700);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .filter-chip.active {
+      border-color: var(--text-700);
+      color: var(--text-900);
+      font-weight: 600;
+      background: #F0F2F5;
+    }
+
+    /* UOM tabs */
+    .uom-tabs {
+      display: flex;
+      background: var(--bg-50);
+      border-radius: 8px;
+      padding: 2px;
+      border: 1px solid var(--text-100);
+    }
+
+    .uom-tab {
+      flex: 1;
+      height: 28px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-500);
+      cursor: pointer;
+    }
+
+    .uom-tab.active {
+      background: var(--white);
+      font-weight: 600;
+      color: var(--text-900);
+      box-shadow: 0px 1px 2px rgba(29,41,61,0.08);
+    }
+
+    /* Stepper */
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--text-100);
+      border-radius: 10px;
+      padding: 6px 10px;
+      background: var(--white);
+    }
+
+    .stepper-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .stepper-btn svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--text-700);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .stepper-value {
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      color: var(--text-900);
+    }
+
+    .stepper-unit {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-500);
+    }
+
+    /* Duration pills */
+    .duration-pills {
+      display: flex;
+      gap: 6px;
+    }
+
+    .duration-pill {
+      flex: 1;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-700);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .duration-pill.active {
+      background: var(--white);
+      border-color: var(--secondary-500);
+      color: var(--secondary-600);
+      font-weight: 600;
+    }
+
+    /* Filter actions */
+    .filter-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-reset {
+      flex: 1;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-700);
+      cursor: pointer;
+    }
+
+    .btn-apply {
+      flex: 1;
+      height: 36px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(156deg, var(--secondary-500) 0%, var(--secondary-600) 100%);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* Concierge card in sidebar */
+    .sidebar-concierge {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sidebar-concierge h4 {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+      color: var(--text-900);
+    }
+
+    .sidebar-concierge p {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 18px;
+      color: var(--text-500);
+    }
+
+    .btn-get-matched {
+      width: 100%;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-900);
+      cursor: pointer;
+    }
+
+    /* ─── LISTINGS MAIN ───────────────────────────────────── */
+    .listings-main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .listings-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .listings-title {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
+      color: var(--text-900);
+    }
+
+    .listings-subtitle {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      color: var(--text-500);
+      margin-top: 2px;
+    }
+
+    .sort-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      background: var(--white);
+      border: 1px solid var(--text-100);
+      font-family: 'Lato', sans-serif;
+      padding: 8px 14px;
+      border-radius: 10px;
+      box-shadow: var(--shadow-btn);
+      height: 36px;
+    }
+
+    .sort-dropdown span {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 18px;
+      color: var(--text-700);
+    }
+
+    .sort-dropdown strong {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-900);
+    }
+
+    .sort-dropdown svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--text-700);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    /* ─── WAREHOUSE CARD ──────────────────────────────────── */
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      overflow: hidden;
+      min-height: 140px;
+    }
+
+    .card-image-wrap {
+      position: relative;
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    .card-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Move-in badge */
+    .move-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      height: 24px;
+      border-radius: 8px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .move-badge.instant {
+      background: rgba(255,255,255,0.92);
+      color: var(--secondary-500);
+      border: 1px solid rgba(64,188,170,0.25);
+    }
+
+    .move-badge.standard {
+      background: rgba(255,255,255,0.92);
+      color: var(--text-700);
+      border: 1px solid var(--text-100);
+    }
+
+    .move-badge svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .move-badge.instant svg { fill: var(--secondary-500); stroke: none; }
+    .move-badge.standard svg { stroke: var(--text-700); fill: none; stroke-width: 1.5; }
+
+    /* Heart */
+    .card-heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .card-heart svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-700);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    /* Nav arrows */
+    .card-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .card-arrow svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--text-900);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .card-arrow.prev { left: 8px; }
+    .card-arrow.next { right: 8px; }
+
+    /* Card body */
+    .card-body {
+      flex: 1;
+      min-width: 0;
+      padding: 16px 20px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .card-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .card-name {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0.1px;
+      color: var(--text-900);
+    }
+
+    .card-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-rating .star {
+      color: var(--star);
+      font-size: 14px;
+    }
+
+    .card-rating .score {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-900);
+      line-height: 18px;
+    }
+
+    .card-rating .reviews {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-500);
+      line-height: 18px;
+    }
+
+    .card-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-700);
+      line-height: 18px;
+    }
+
+    .tag-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--text-200);
+      flex-shrink: 0;
+    }
+
+    /* Card pricing */
+    .card-pricing {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .price-main {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 30px;
+      color: var(--text-900);
+    }
+
+    .price-unit {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-500);
+      line-height: 16px;
+    }
+
+    .price-total {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-500);
+      line-height: 16px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 8px;
+      align-self: flex-end;
+    }
+
+    .btn-compare {
+      height: 36px;
+      padding: 0 16px;
+      border-radius: 10px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-900);
+      cursor: pointer;
+    }
+
+    .btn-view {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 20px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(156deg, var(--secondary-500) 0%, var(--secondary-600) 100%);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* ─── INLINE CONCIERGE BANNER ─────────────────────────── */
+    .inline-concierge {
+      background: #F0FAF8;
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border: 1px solid #D4EDE7;
+    }
+
+    .inline-concierge-text h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-900);
+      line-height: 22px;
+    }
+
+    .inline-concierge-text p {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-500);
+      line-height: 18px;
+      margin-top: 2px;
+    }
+
+    .inline-concierge-text p span {
+      color: var(--secondary-500);
+    }
+
+    .btn-inline-matched {
+      height: 40px;
+      padding: 0 20px;
+      border-radius: 10px;
+      border: 1px solid var(--secondary-500);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--secondary-600);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  .footer .inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .footer { background: var(--text-900); padding: 80px 0 32px; color: rgba(255,255,255,0.7); }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr 1.2fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+  .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+  .footer-logo { display: flex; align-items: center; gap: 8px; font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+  .footer-tagline { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.5; max-width: 260px; }
+  .footer-cities { display: flex; flex-wrap: wrap; gap: 8px; max-width: 280px; }
+  .footer-city-chip { display: inline-flex; align-items: center; padding: 8px 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; font-size: 14px; color: rgba(255,255,255,0.85); text-decoration: none; transition: border-color .12s, background .12s, color .12s; }
+  .footer-city-chip:hover { border-color: var(--secondary-500); background: rgba(64,188,170,0.1); color: #fff; }
+  .footer-col-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 24px; }
+  .footer-link { display: block; font-size: 16px; color: rgba(255,255,255,0.75); padding: 8px 0; text-decoration: none; transition: color .12s; }
+  .footer-link:hover { color: var(--secondary-500); }
+  .footer-divider { border: 0; border-top: 1px solid rgba(255,255,255,0.08); margin: 0; }
+  .footer-browse { padding: 40px 0; }
+  .footer-browse-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+  .footer-browse-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .footer-select { appearance: none; -webkit-appearance: none; width: 100%; height: 52px; padding: 0 44px 0 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; font-family: 'Lato', sans-serif; font-size: 16px; color: #fff; cursor: pointer; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='rgba(255,255,255,0.6)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"); background-repeat: no-repeat; background-position: right 20px center; transition: border-color .12s, background .12s; }
+  .footer-select option { background: var(--text-900); color: #fff; }
+  .footer-select:hover { border-color: var(--secondary-500); }
+  .footer-select:focus { outline: none; border-color: var(--secondary-500); }
+  .footer-bottom { padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: rgba(255,255,255,0.45); }
+  .footer-legal { display: flex; gap: 32px; }
+  .footer-legal a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color .12s; }
+  .footer-legal a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- ─── HEADER ──────────────────────────────────────────── -->
+  <header class="header" data-cargoz-component="navbar"></header>
+
+  <!-- ─── SEARCH STRIP ─────────────────────────────────────── -->
+  <div class="search-strip">
+    <div class="inner">
+    <div class="search-pill">
+      <label class="search-field" style="position:relative;">
+        <span class="search-field-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <div class="search-field-text">
+          <span class="search-field-label">Type of cargo</span>
+          <div class="search-field-value">
+            <span id="strip-goods-label">General Cargo</span>
+            <svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9" /></svg>
+          </div>
+        </div>
+        <select id="strip-goods" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;background:transparent;appearance:none;-webkit-appearance:none;" aria-label="Type of cargo">
+          <option>General Cargo</option>
+          <option>Food &amp; Beverages</option>
+          <option>Medical</option>
+        </select>
+      </label>
+      <div class="search-divider"></div>
+      <label class="search-field" style="position:relative;">
+        <span class="search-field-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <div class="search-field-text">
+          <span class="search-field-label">Location</span>
+          <div class="search-field-value">
+            <span id="strip-emirate-label">Dubai</span>
+            <svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9" /></svg>
+          </div>
+        </div>
+        <select id="strip-emirate" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;background:transparent;appearance:none;-webkit-appearance:none;" aria-label="Emirate">
+          <option>Any</option>
+          <option>Dubai</option>
+          <option>Abu Dhabi</option>
+          <option>Sharjah</option>
+          <option>Ajman</option>
+          <option>Ras Al Khaimah</option>
+          <option>Umm Al Quwain</option>
+        </select>
+      </label>
+      <button id="strip-update" class="search-strip-btn">
+        Update
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    </div>
+  </div>
+
+  <!-- ─── PAGE BODY ─────────────────────────────────────────── -->
+  <div class="page-body">
+    <div class="inner">
+
+    <!-- ─── SIDEBAR ──────────────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="filter-panel">
+        <span class="filter-title">Filters</span>
+
+        <!-- Type of Warehouse -->
+        <div class="filter-section">
+          <span class="filter-section-label">Type of Warehouse</span>
+          <div id="wh-type-chips" class="chip-group">
+            <!-- chips rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Size -->
+        <div class="filter-section" style="border-top:1px solid var(--text-100);padding-top:18px;">
+          <span class="filter-section-label">Size</span>
+          <div id="uom-tabs" class="uom-tabs">
+            <button class="uom-tab active" data-uom="Sqft">sqft</button>
+            <button class="uom-tab" data-uom="CBM">CBM</button>
+            <button class="uom-tab" data-uom="Pallet" hidden>Pallet</button>
+          </div>
+          <div class="stepper">
+            <button id="size-minus" class="stepper-btn" type="button"><svg viewBox="0 0 12 2"><line x1="1" y1="1" x2="11" y2="1"/></svg></button>
+            <span id="size-value" class="stepper-value">100</span>
+            <span id="size-unit" class="stepper-unit">sqft</span>
+            <button id="size-plus" class="stepper-btn" type="button"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Duration -->
+        <div class="filter-section" style="border-top:1px solid var(--text-100);padding-top:18px;">
+          <span class="filter-section-label">Duration</span>
+          <div class="stepper">
+            <button id="dur-minus" class="stepper-btn" type="button"><svg viewBox="0 0 12 2"><line x1="1" y1="1" x2="11" y2="1"/></svg></button>
+            <span id="dur-value" class="stepper-value">1</span>
+            <span id="dur-unit" class="stepper-unit">Months</span>
+            <button id="dur-plus" class="stepper-btn" type="button"><svg viewBox="0 0 12 12"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></button>
+          </div>
+          <div id="duration-pills" class="duration-pills">
+            <button class="duration-pill active" data-period="1">1 mo</button>
+            <button class="duration-pill" data-period="3">3 mo</button>
+            <button class="duration-pill" data-period="6">6 mo</button>
+            <button class="duration-pill" data-period="12">12 mo</button>
+          </div>
+        </div>
+
+        <div class="filter-actions">
+          <button id="filter-reset" class="btn-reset" type="button">Reset</button>
+          <button id="filter-apply" class="btn-apply" type="button">Apply</button>
+        </div>
+      </div>
+
+      <!-- Concierge -->
+      <div class="sidebar-concierge">
+        <h4>Not sure what you need?</h4>
+        <p>Describe your cargo and get matched with the right warehouses. Quotes on WhatsApp in 2 hours.</p>
+        <button class="btn-get-matched" type="button">Get Matched Instead</button>
+      </div>
+    </aside>
+
+    <!-- ─── LISTINGS ───────────────────────────────────────── -->
+    <div class="listings-main">
+      <div class="listings-header">
+        <div>
+          <div id="listings-title" class="listings-title">Loading…</div>
+          <div class="listings-subtitle">Updated 2 minutes ago</div>
+        </div>
+        <label class="sort-dropdown" for="sort-select" style="position:relative;">
+          <span>Sort By: </span>
+          <strong id="sort-label">Recommended</strong>
+          <svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1" /></svg>
+          <select id="sort-select" aria-label="Sort by" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;background:transparent;appearance:none;-webkit-appearance:none;">
+            <option>Recommended</option>
+            <option>Low to High</option>
+            <option>High to Low</option>
+            <option>Top Rated</option>
+            <option>Most Reviews</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="listings-banners" style="display:flex;flex-direction:column;gap:12px;"></div>
+      <div id="listings-list" style="display:flex;flex-direction:column;gap:12px;"></div>
+      <div id="listings-pagination"></div>
+
+    </div><!-- /listings-main -->
+    </div><!-- /inner -->
+  </div><!-- /page-body -->
+
+<!-- ─── FOOTER ──────────────────────────── -->
+<footer class="footer" data-cargoz-component="footer"></footer>
+
+<script is:inline src="/scripts/data.js"></script>
+<script is:inline src="/scripts/components.js"></script>
+<script is:inline>
+(function(){
+  /* ----- State -------------------------------------------------- */
+  const params = new URLSearchParams(location.search);
+  const search = {
+    goodsIntent: params.get("goodsIntent") || DEFAULT_SEARCH_STATE.goodsIntent,
+    emirate:     params.get("emirate")     || DEFAULT_SEARCH_STATE.emirate,
+    area:        params.get("area")        || "",
+    period:      params.get("period")      || DEFAULT_SEARCH_STATE.period
+  };
+  const state = {
+    sizeInput:  parseInt(params.get("size"),10) || DEFAULT_FILTERS.sizeInput,
+    sizeUnit:   params.get("unit") || DEFAULT_FILTERS.sizeUnit,
+    period:     search.period,
+    warehouseTypeFilters: defaultWhTypesForIntent(search.goodsIntent),
+    goodsType:  search.goodsIntent,
+    isFixedAreaChecked: false,
+    isLockableChecked: false,
+    faSizeInput: 100,
+    lockableRange: "100-150",
+    sort: "Recommended",
+    page: 1
+  };
+  let compareSet = JSON.parse(sessionStorage.getItem("cargoz.compare") || "[]");
+
+  /* ----- DOM refs ----------------------------------------------- */
+  const $ = id => document.getElementById(id);
+  const stripGoods = $("strip-goods"), stripGoodsLabel = $("strip-goods-label");
+  const stripEmirate = $("strip-emirate"), stripEmirateLabel = $("strip-emirate-label");
+  const stripUpdate = $("strip-update");
+  const chipsEl = $("wh-type-chips");
+  const uomTabs = document.querySelectorAll(".uom-tab");
+  const sizeMinus = $("size-minus"), sizePlus = $("size-plus");
+  const sizeValueEl = $("size-value"), sizeUnitEl = $("size-unit");
+  const filterReset = $("filter-reset"), filterApply = $("filter-apply");
+  const durationPills = document.querySelectorAll(".duration-pill");
+  const durMinus = $("dur-minus"), durPlus = $("dur-plus");
+  const durValueEl = $("dur-value"), durUnitEl = $("dur-unit");
+  const sortSelect = $("sort-select"), sortLabel = $("sort-label");
+  const titleEl = $("listings-title");
+  const bannersEl = $("listings-banners");
+  const listEl = $("listings-list");
+  const pageEl = $("listings-pagination");
+
+  /* ----- Persistence helpers ----------------------------------- */
+  function saveCompare() { sessionStorage.setItem("cargoz.compare", JSON.stringify(compareSet)); }
+  function emirateLabel(e) { return e === "Any" ? "all emirates" : e; }
+
+  /* ----- Initial control sync ---------------------------------- */
+  if (stripGoods) stripGoods.value = search.goodsIntent;
+  if (stripEmirate) stripEmirate.value = search.emirate;
+  stripGoodsLabel.textContent = search.goodsIntent;
+  stripEmirateLabel.textContent = search.emirate;
+
+  /* ----- Sidebar render: WH-type chips ------------------------- */
+  function renderTypeChips() {
+    chipsEl.innerHTML = "";
+    const intent = search.goodsIntent;
+    const all = (intent === "Medical")
+      ? ["AC Warehouse","Medical Warehouse","Open Yard"]
+      : (intent === "Food & Beverages")
+        ? ["AC Warehouse","Chiller Warehouse","Freezer Warehouse","Non-AC Warehouse","Open Yard"]
+        : ["Non-AC Warehouse","AC Warehouse","Chiller Warehouse","Freezer Warehouse","Open Yard"];
+    all.forEach(t => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "filter-chip" + (state.warehouseTypeFilters.includes(t) ? " active" : "");
+      b.dataset.type = t;
+      b.textContent = t.replace(" Warehouse","");
+      b.onclick = () => {
+        const idx = state.warehouseTypeFilters.indexOf(t);
+        if (idx >= 0) state.warehouseTypeFilters.splice(idx,1);
+        else state.warehouseTypeFilters.push(t);
+        state.page = 1;
+        renderTypeChips(); renderListings();
+      };
+      chipsEl.appendChild(b);
+    });
+  }
+
+  /* ----- Sidebar: UOM tabs ------------------------------------- */
+  function syncUomTabs() {
+    const palletTab = document.querySelector('.uom-tab[data-uom="Pallet"]');
+    // Pallet tab only visible when state.sizeUnit is already Pallet (entered via rescue switch)
+    if (palletTab) palletTab.hidden = state.sizeUnit !== "Pallet";
+    uomTabs.forEach(t => t.classList.toggle("active", t.dataset.uom === state.sizeUnit));
+  }
+  uomTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const newUom = tab.dataset.uom;
+      if (newUom === state.sizeUnit) return;
+      state.sizeUnit = newUom;
+      // §9.11 — reset size to default min for that UOM
+      state.sizeInput = SIZE_LIMITS[newUom].min === 50 ? 100 : SIZE_LIMITS[newUom].min;
+      state.page = 1;
+      syncUomTabs(); syncSizeStepper(); renderListings();
+    });
+  });
+
+  /* ----- Sidebar: size stepper --------------------------------- */
+  function syncSizeStepper() {
+    sizeValueEl.textContent = state.sizeInput.toLocaleString("en-US");
+    const u = state.sizeUnit;
+    sizeUnitEl.textContent = u === "Sqft" ? "sqft" : u === "CBM" ? "CBM" : "Pallet";
+  }
+  function stepSize(delta) {
+    const lim = SIZE_LIMITS[state.sizeUnit];
+    const step = state.sizeUnit === "Sqft" ? 50 : 5;
+    let next = state.sizeInput + delta * step;
+    next = Math.max(lim.min, Math.min(lim.max, next));
+    state.sizeInput = next;
+    state.page = 1;
+    syncSizeStepper(); renderListings();
+  }
+  sizeMinus.addEventListener("click", () => stepSize(-1));
+  sizePlus.addEventListener("click", () => stepSize(1));
+
+  /* ----- Sidebar: duration ------------------------------------- */
+  function syncDuration() {
+    const m = periodToInt(state.period);
+    durValueEl.textContent = m;
+    durUnitEl.textContent = m === 1 ? "Month" : "Months";
+    durationPills.forEach(p => {
+      p.classList.toggle("active", parseInt(p.dataset.period,10) === m);
+    });
+  }
+  function setPeriodMonths(m) {
+    m = Math.max(1, Math.min(36, m));
+    state.period = `${m} Month${m === 1 ? "" : "s"}`;
+    state.page = 1;
+    syncDuration(); renderListings();
+  }
+  durationPills.forEach(p => {
+    p.addEventListener("click", () => setPeriodMonths(parseInt(p.dataset.period,10)));
+  });
+  durMinus.addEventListener("click", () => setPeriodMonths(periodToInt(state.period) - 1));
+  durPlus.addEventListener("click", () => setPeriodMonths(periodToInt(state.period) + 1));
+
+  /* ----- Sidebar: reset / apply -------------------------------- */
+  filterReset.addEventListener("click", () => {
+    state.sizeInput = DEFAULT_FILTERS.sizeInput;
+    state.sizeUnit  = DEFAULT_FILTERS.sizeUnit;
+    state.period    = DEFAULT_FILTERS.period;
+    state.warehouseTypeFilters = defaultWhTypesForIntent(search.goodsIntent);
+    state.page = 1;
+    renderTypeChips(); syncUomTabs(); syncSizeStepper(); syncDuration(); renderListings();
+  });
+  filterApply.addEventListener("click", () => {
+    state.page = 1;
+    renderListings();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ----- Search-strip ------------------------------------------ */
+  stripGoods.addEventListener("change", () => {
+    stripGoodsLabel.textContent = stripGoods.value;
+  });
+  stripEmirate.addEventListener("change", () => {
+    stripEmirateLabel.textContent = stripEmirate.value;
+  });
+  stripUpdate.addEventListener("click", () => {
+    search.goodsIntent = stripGoods.value;
+    search.emirate     = stripEmirate.value;
+    state.goodsType = search.goodsIntent;
+    state.warehouseTypeFilters = defaultWhTypesForIntent(search.goodsIntent);
+    // Goods change can force unit reset for Medical or F&B
+    if (search.goodsIntent === "Food & Beverages" && state.sizeUnit !== "CBM") {
+      state.sizeUnit = "CBM"; state.sizeInput = 50;
+    } else if (search.goodsIntent === "Medical" && state.sizeUnit === "CBM") {
+      state.sizeUnit = "Sqft"; state.sizeInput = 100;
+    }
+    state.page = 1;
+    renderTypeChips(); syncUomTabs(); syncSizeStepper(); renderListings();
+  });
+
+  /* ----- Sort -------------------------------------------------- */
+  sortSelect.addEventListener("change", () => {
+    state.sort = sortSelect.value;
+    sortLabel.textContent = sortSelect.value;
+    state.page = 1;
+    renderListings();
+  });
+
+  /* ----- Compare set persists in sessionStorage; visible state shown on each card */
+  function renderCompareBar() { /* no visible bar — compare state shown on cards */ }
+
+  /* ----- Banners ------------------------------------------------ */
+  /* Flagship rescue card — gradient-teal bg, eyebrow + headline + dual CTAs.
+     Reuses DESIGN.md "flagship card" pattern for high-stakes rescue moments. */
+  const WA_HREF = `https://wa.me/${CARGOZ_WHATSAPP}`;
+  const WA_ICON = `<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.04 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.889-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.886 9.884zm8.413-18.297A11.815 11.815 0 0 0 12.04 0C5.463 0 .106 5.336.104 11.892c0 2.096.549 4.142 1.591 5.945L0 24l6.335-1.652a11.882 11.882 0 0 0 5.7 1.45h.005c6.554 0 11.89-5.335 11.893-11.892A11.821 11.821 0 0 0 20.453 3.488z"/></svg>`;
+
+  function flagshipBanner(opts) {
+    const {eyebrow, headline, subtext, primaryCta, primaryAttrs, secondaryCta, secondaryAttrs, secondaryStyle, illustration} = opts;
+    const wrapStyle = "background:linear-gradient(135deg,#F2FFFE 0%,#F2FAF9 100%);border:1px solid #D8F0EC;border-radius:20px;padding:28px 32px;display:flex;gap:32px;align-items:center;";
+    const colStyle = "flex:1;display:flex;flex-direction:column;gap:10px;";
+    const eyebrowStyle = "font-family:'Lato',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--secondary-500);";
+    const headlineStyle = "font-family:'Lato',sans-serif;font-size:22px;font-weight:700;line-height:1.25;color:var(--text-900);margin:0;max-width:60ch;";
+    const subStyle = "font-family:'Lato',sans-serif;font-size:14px;line-height:1.55;color:var(--text-500);margin:0;max-width:60ch;";
+    const ctaRow = "display:flex;gap:10px;margin-top:6px;flex-wrap:wrap;";
+    const primaryStyle = "height:44px;padding:0 20px;background:var(--secondary-500);color:#fff;border:0;border-radius:10px;font-family:'Lato',sans-serif;font-size:14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;";
+    const secStyleDef = "height:44px;padding:0 18px;background:#fff;border:1px solid var(--text-100);color:var(--text-900);border-radius:10px;font-family:'Lato',sans-serif;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;";
+    const primaryHTML = primaryCta
+      ? `<button type="button" style="${primaryStyle}" ${primaryAttrs || ""}>${primaryCta}</button>` : "";
+    const secondaryHTML = secondaryCta
+      ? `<a style="${secondaryStyle || secStyleDef}" ${secondaryAttrs || ""}>${secondaryCta}</a>` : "";
+    const illuHTML = illustration
+      ? `<div style="flex-shrink:0;display:flex;align-items:center;justify-content:center;">${illustration}</div>` : "";
+    return `<div style="${wrapStyle}">
+      <div style="${colStyle}">
+        ${eyebrow ? `<span style="${eyebrowStyle}">${eyebrow}</span>` : ""}
+        <h3 style="${headlineStyle}">${headline}</h3>
+        ${subtext ? `<p style="${subStyle}">${subtext}</p>` : ""}
+        ${(primaryCta || secondaryCta) ? `<div style="${ctaRow}">${primaryHTML}${secondaryHTML}</div>` : ""}
+      </div>
+      ${illuHTML}
+    </div>`;
+  }
+
+  /* SVG illustrations — restrained, line-based, teal accent only */
+  function svgSwitchUnit(fromUom, toUom) {
+    const fromLabel = fromUom === "Sqft" ? "SQFT" : fromUom.toUpperCase();
+    const toLabel = toUom === "Sqft" ? "SQFT" : toUom.toUpperCase();
+    return `<svg width="180" height="130" viewBox="0 0 180 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g opacity="0.4">
+        <rect x="12" y="32" width="54" height="60" rx="8" stroke="#314158" stroke-width="1.5"/>
+        <path d="M22 48 L40 58 L58 48" stroke="#314158" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M40 58 L40 78" stroke="#314158" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="18" y1="38" x2="60" y2="86" stroke="#314158" stroke-width="1.5" stroke-linecap="round"/>
+      </g>
+      <text x="39" y="110" text-anchor="middle" font-family="Lato, sans-serif" font-size="10" font-weight="700" fill="#62748E" letter-spacing="1">${fromLabel}</text>
+      <path d="M76 62 L102 62" stroke="#40BCAA" stroke-width="2" stroke-linecap="round"/>
+      <path d="M96 56 L104 62 L96 68" stroke="#40BCAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <rect x="114" y="32" width="54" height="60" rx="8" stroke="#40BCAA" stroke-width="2" fill="#F2FFFE"/>
+      <path d="M124 48 L142 58 L160 48" stroke="#40BCAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M142 58 L142 78" stroke="#40BCAA" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="160" cy="34" r="9" fill="#40BCAA"/>
+      <path d="M155.5 34 L159 37.5 L165 31" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <text x="141" y="110" text-anchor="middle" font-family="Lato, sans-serif" font-size="10" font-weight="700" fill="#40BCAA" letter-spacing="1">${toLabel}</text>
+    </svg>`;
+  }
+
+  /* Chip-strip — horizontal row of teal-tint mini-cards as alternative paths.
+     Reuses DESIGN.md "stat chip" pattern. Used for additive (multi-option) rescues. */
+  function chipStripBanner(intro, chips) {
+    const wrap = "display:flex;flex-direction:column;gap:10px;padding:14px 16px;background:var(--white);border:1px solid var(--text-100);border-radius:14px;";
+    const introStyle = "font-family:'Lato',sans-serif;font-size:13px;font-weight:600;color:var(--text-900);margin:0;";
+    const stripStyle = "display:flex;gap:10px;flex-wrap:wrap;";
+    const chipStyle = "flex:1 1 220px;min-width:200px;background:#F2FFFE;border:1px solid #D8F0EC;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;text-align:left;cursor:pointer;font-family:'Lato',sans-serif;";
+    const labelStyle = "font-size:13px;font-weight:700;color:var(--text-900);display:flex;align-items:center;justify-content:space-between;gap:8px;";
+    const captionStyle = "font-size:12px;color:var(--text-500);";
+    const chipsHTML = chips.map(c =>
+      `<button type="button" style="${chipStyle}" ${c.attrs || ""}>
+        <span style="${labelStyle}">${c.label}<span style="color:var(--secondary-500);font-weight:700;">→</span></span>
+        <span style="${captionStyle}">${c.caption}</span>
+      </button>`
+    ).join("");
+    return `<div style="${wrap}">
+      ${intro ? `<p style="${introStyle}">${intro}</p>` : ""}
+      <div style="${stripStyle}">${chipsHTML}</div>
+    </div>`;
+  }
+
+  /* Subtle info pill — used for thin-results / informational notes (low priority). */
+  function infoPill(text) {
+    const wrap = "background:var(--bg-50);border:1px solid var(--text-100);border-radius:12px;padding:12px 16px;font-family:'Lato',sans-serif;font-size:13px;color:var(--text-700);display:flex;align-items:center;gap:10px;";
+    const dot = `<span style="width:6px;height:6px;border-radius:50%;background:var(--secondary-500);flex-shrink:0;"></span>`;
+    return `<div style="${wrap}">${dot}<span>${text}</span></div>`;
+  }
+
+  /* Mapping rescue cases → flagship / chip-strip / info-pill */
+  function bannerCoupling(c) {
+    const copy = COUPLING_COPY[c.rule];
+    const body = typeof copy.body === "function" ? copy.body(state.sizeUnit) : copy.body;
+    const waCta = `${WA_ICON}<span>WhatsApp our team</span>`;
+    const waStyle = "height:44px;padding:0 18px;background:#00B26F;border:0;color:#fff;border-radius:10px;font-family:'Lato',sans-serif;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;";
+    if (c.switchTo) {
+      return flagshipBanner({
+        eyebrow: "DIAGNOSED · NO MATCH IN " + (state.sizeUnit === "Sqft" ? "SQFT" : state.sizeUnit.toUpperCase()),
+        headline: copy.headline,
+        subtext: body,
+        primaryCta: `Switch to ${c.switchTo === "Sqft" ? "sqft" : c.switchTo}`,
+        primaryAttrs: `data-action="switch" data-uom="${c.switchTo}"`,
+        secondaryCta: waCta,
+        secondaryAttrs: `href="${WA_HREF}" target="_blank" rel="noreferrer"`,
+        secondaryStyle: waStyle,
+        illustration: svgSwitchUnit(state.sizeUnit, c.switchTo)
+      });
+    }
+    return flagshipBanner({
+      eyebrow: "RESCUE",
+      headline: copy.headline,
+      subtext: body,
+      secondaryCta: waCta,
+      secondaryAttrs: `href="${WA_HREF}" target="_blank" rel="noreferrer"`,
+      secondaryStyle: waStyle
+    });
+  }
+  function bannerAltUom(counts) {
+    const chips = Object.entries(counts).map(([u,c]) => ({
+      label: `${c} in ${u === "Sqft" ? "sqft" : u}`,
+      caption: `Switch unit to see warehouses priced in ${u === "Sqft" ? "sqft" : u}.`,
+      attrs: `data-action="switch" data-uom="${u}"`
+    }));
+    return chipStripBanner("Try a different unit", chips);
+  }
+  function bannerNearby(list) {
+    const head = flagshipBanner({
+      eyebrow: "EXPANDED SEARCH",
+      headline: `Nothing matched in ${emirateLabel(search.emirate)} — here are nearby options`,
+      subtext: "Same size and unit. Different emirate. Move-in within 48–72 hours.",
+    });
+    const cards = list.slice(0,3).map(w => cardHTML(w, false)).join("");
+    return head + cards;
+  }
+  function bannerConcierge() {
+    const waCta = `${WA_ICON}<span>WhatsApp our team</span>`;
+    const waStyle = "height:44px;padding:0 18px;background:#00B26F;border:0;color:#fff;border-radius:10px;font-family:'Lato',sans-serif;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;";
+    return flagshipBanner({
+      eyebrow: "NO EXACT MATCH",
+      headline: "Tell us what you're storing — we'll hand-pick options",
+      subtext: "Our team negotiates direct with warehouse owners. Quotes on WhatsApp in 2 hours.",
+      secondaryCta: waCta,
+      secondaryAttrs: `href="${WA_HREF}" target="_blank" rel="noreferrer"`,
+      secondaryStyle: waStyle
+    });
+  }
+  function bannerPartialUom(buckets) {
+    const chips = buckets.map(b => ({
+      label: `${b.count} ${b.type.replace(" Warehouse","")} in ${b.altUom === "Sqft" ? "sqft" : b.altUom}`,
+      caption: `These warehouses price by ${b.altUom === "Sqft" ? "sqft" : b.altUom}.`,
+      attrs: `data-action="switch-and-types" data-uom="${b.altUom}" data-type="${b.type}"`
+    }));
+    return chipStripBanner("Some warehouses price differently", chips);
+  }
+  function bannerThin(n) {
+    return infoPill(`Only ${n} match${n===1?"":"es"} — try a different size, unit, or emirate to see more.`);
+  }
+  function bannerOversize() {
+    const waCta = `${WA_ICON}<span>WhatsApp our team</span>`;
+    const waStyle = "height:44px;padding:0 18px;background:#00B26F;border:0;color:#fff;border-radius:10px;font-family:'Lato',sans-serif;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;";
+    return flagshipBanner({
+      eyebrow: "CUSTOM QUOTE",
+      headline: "Spaces this large need a custom quote",
+      subtext: `For ${state.sizeInput.toLocaleString("en-US")} ${state.sizeUnit === "Sqft" ? "sqft" : state.sizeUnit}, our team negotiates direct with warehouse owners.`,
+      secondaryCta: waCta,
+      secondaryAttrs: `href="${WA_HREF}" target="_blank" rel="noreferrer"`,
+      secondaryStyle: waStyle
+    });
+  }
+  function bannerMedicalRegime() {
+    return infoPill("Medical cargo regime — DHA / MOH-licensed storage required. Filters tuned to medical-eligible warehouses.");
+  }
+
+  /* ----- Card render ------------------------------------------- */
+  function cardHTML(w, instant) {
+    const moveBadge = instant
+      ? `<div class="move-badge instant"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>24hr move-in</div>`
+      : `<div class="move-badge standard"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>3-5 day move-in</div>`;
+    const imgs = (w.images && w.images.length) ? w.images.map(i => i.url) : [IMG.ac1];
+    const img = imgs[0];
+    const zones = getTempZones(w).slice(0,3);
+    const tagHTML = zones.map((z,i) => (i ? '<div class="tag-dot"></div>' : '') + `<span class="tag">${z}</span>`).join("");
+    const price = getUOMPrice(w, state);
+    const priceMain = price === Infinity ? "—" : "AED " + price.toLocaleString("en-AE", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const months = periodToInt(state.period);
+    const total = price === Infinity ? null : Math.max(price * state.sizeInput * months, (filterRateCard(w,state)[0]||{}).min || 0);
+    const totalLine = total ? formatAEDInt(total) + ` for ${formatPeriod(months)}` : "Quote on request";
+    const inCompare = compareSet.includes(w.id);
+    const unitLabel = state.sizeUnit === "Sqft" ? "sqft" : state.sizeUnit;
+    const arrowBtn = "position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.92);border:1px solid rgba(15,23,43,0.08);box-shadow:0 2px 6px rgba(15,23,43,0.18);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;z-index:2;color:#0F172B;opacity:0;transition:opacity 160ms ease;pointer-events:none;";
+    const arrowSvg = (d) => `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="${d}"/></svg>`;
+    const carouselArrows = imgs.length > 1
+      ? `<button class="card-arrow-prev" type="button" aria-label="Previous" data-id="${w.id}" style="${arrowBtn}left:10px;">${arrowSvg("15 18 9 12 15 6")}</button>
+         <button class="card-arrow-next" type="button" aria-label="Next" data-id="${w.id}" style="${arrowBtn}right:10px;">${arrowSvg("9 18 15 12 9 6")}</button>`
+      : "";
+    return `<div class="card" data-id="${w.id}">
+      <div class="card-image-wrap">
+        <img src="${img}" alt="${w.id}" data-images='${JSON.stringify(imgs)}' data-idx="0" />
+        ${moveBadge}
+        ${carouselArrows}
+        <button class="card-heart" type="button" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      </div>
+      <div class="card-body">
+        <div class="card-info">
+          <div class="card-name">${w.id}</div>
+          <div class="card-rating">
+            <span class="star">★</span>
+            <span class="score">${w.rating.toFixed(1)}</span>
+            <span class="reviews">(${w.reviews} reviews)</span>
+          </div>
+          <div class="card-tags">${tagHTML}<div class="tag-dot"></div><span class="tag">${w.area}</span></div>
+        </div>
+        <div class="card-pricing">
+          <div><span class="price-main">${priceMain}</span></div>
+          <div class="price-unit">/${unitLabel} per month</div>
+          <div class="price-total">${totalLine}</div>
+          <div class="card-actions">
+            <button class="btn-compare${inCompare ? " active" : ""}" type="button" data-id="${w.id}">${inCompare ? "Added" : "Compare"}</button>
+            <a href="detail.html?id=${w.id}&size=${state.sizeInput}&unit=${state.sizeUnit}&period=${encodeURIComponent(state.period)}&goodsIntent=${encodeURIComponent(search.goodsIntent)}" class="btn-view">View</a>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function inlineConciergeHTML() {
+    const wrap = "background:linear-gradient(135deg,#F2FFFE 0%,#F2FAF9 100%);border:1.5px solid #40BCAA;border-radius:20px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;";
+    const head = "font-family:'Lato',sans-serif;font-size:16px;font-weight:700;color:var(--text-900);line-height:24px;margin:0;";
+    const body = "font-family:'Lato',sans-serif;font-size:14px;font-weight:400;color:var(--text-500);line-height:20px;margin:4px 0 0;";
+    const btn = "height:40px;padding:0 20px;border-radius:10px;border:1px solid var(--text-100);background:var(--white);font-family:'Lato',sans-serif;font-size:14px;font-weight:600;color:var(--text-900);cursor:pointer;white-space:nowrap;flex-shrink:0;display:inline-flex;align-items:center;text-decoration:none;";
+    return `<div style="${wrap}">
+      <div>
+        <h4 style="${head}">Not sure what you need?</h4>
+        <p style="${body}">Describe your cargo and get matched with the right warehouses. Quotes on WhatsApp in 2 hours.</p>
+      </div>
+      <a style="${btn}" href="https://wa.me/${CARGOZ_WHATSAPP}" target="_blank" rel="noreferrer">Get Matched Instead</a>
+    </div>`;
+  }
+
+  /* ----- Pagination -------------------------------------------- */
+  function renderPagination(total) {
+    const pages = Math.max(1, Math.ceil(total / ITEMS_PER_PAGE));
+    pageEl.style.cssText = "display:flex;justify-content:center;gap:6px;padding:24px 0 8px;";
+    if (pages <= 1) { pageEl.innerHTML = ""; return; }
+    let html = "";
+    for (let i = 1; i <= pages; i++) {
+      const active = i === state.page;
+      const btnStyle = `width:36px;height:36px;border-radius:8px;border:1px solid var(--text-100);background:${active?"var(--text-900)":"var(--white)"};color:${active?"var(--white)":"var(--text-700)"};font-family:'Lato',sans-serif;font-size:13px;font-weight:600;cursor:pointer;`;
+      html += `<button type="button" data-page="${i}" style="${btnStyle}">${i}</button>`;
+    }
+    pageEl.innerHTML = html;
+    pageEl.querySelectorAll("button").forEach(b => {
+      b.onclick = () => { state.page = parseInt(b.dataset.page,10); renderListings(); window.scrollTo({top:0,behavior:"smooth"}); };
+    });
+  }
+
+  /* ----- Main render ------------------------------------------- */
+  function renderListings() {
+    syncUomTabs(); syncSizeStepper(); syncDuration();
+    sortSelect.value = state.sort; sortLabel.textContent = state.sort;
+
+    const ctx = { ...state, goodsIntent: search.goodsIntent, emirate: search.emirate, area: search.area };
+    const lim = SIZE_LIMITS[state.sizeUnit];
+    const oversize = state.sizeInput > lim.max;
+    bannersEl.innerHTML = "";
+    listEl.innerHTML = "";
+
+    /* Oversize terminal — wins over all rescues */
+    if (oversize) {
+      titleEl.textContent = `Custom quote — ${state.sizeInput.toLocaleString("en-US")} ${state.sizeUnit}`;
+      bannersEl.innerHTML = bannerOversize();
+      pageEl.innerHTML = "";
+      return;
+    }
+
+    /* Medical regime advisory (additive) */
+    let preBanners = "";
+    if (search.goodsIntent === "Medical") preBanners += bannerMedicalRegime();
+
+    /* Coupling rescue (precedence 1) */
+    const coupling = detectCouplingViolation(ctx);
+    if (coupling) {
+      titleEl.textContent = `${search.goodsIntent} — ${emirateLabel(search.emirate)}`;
+      bannersEl.innerHTML = preBanners + bannerCoupling(coupling);
+      wireSwitchActions();
+      pageEl.innerHTML = "";
+      return;
+    }
+
+    /* Filter primary list */
+    const matches = WAREHOUSES.filter(w => matchesFilters(w, ctx));
+    const sorted  = sortListings(matches, ctx, state.sort);
+
+    /* UOM rescue (precedence 2) */
+    if (sorted.length === 0) {
+      const counts = altUomCounts(ctx, WAREHOUSES);
+      const nearby = nearbyListings(ctx, WAREHOUSES);
+      titleEl.textContent = `0 warehouses in ${emirateLabel(search.emirate)}`;
+      let html = preBanners;
+      if (counts) html += bannerAltUom(counts);
+      if (!counts && nearby) html += bannerNearby(nearby);
+      if (!counts && !nearby) html += bannerConcierge();
+      bannersEl.innerHTML = html;
+      wireSwitchActions();
+      pageEl.innerHTML = "";
+      return;
+    }
+
+    /* Title */
+    titleEl.textContent = `${sorted.length} Warehouse${sorted.length===1?"":"s"} in ${emirateLabel(search.emirate)}`;
+
+    /* Additive banners */
+    const partials = partialUomCoverage(ctx, WAREHOUSES);
+    if (partials) preBanners += bannerPartialUom(partials);
+    if (sorted.length > 0 && sorted.length < 5) preBanners += bannerThin(sorted.length);
+    bannersEl.innerHTML = preBanners;
+
+    /* Render paged list with concierge insert at slot 4 */
+    const start = (state.page - 1) * ITEMS_PER_PAGE;
+    const pageItems = sorted.slice(start, start + ITEMS_PER_PAGE);
+    let html = "";
+    pageItems.forEach((w, idx) => {
+      const instant = isInstantEligible(w, ctx);
+      html += cardHTML(w, instant);
+      if (state.page === 1 && idx === 4) html += inlineConciergeHTML();
+    });
+    listEl.innerHTML = html;
+    wireCardActions();
+    wireSwitchActions();
+    renderPagination(sorted.length);
+    renderCompareBar();
+  }
+
+  /* ----- Card / banner action wiring --------------------------- */
+  function wireCardActions() {
+    listEl.querySelectorAll(".btn-compare").forEach(btn => {
+      btn.onclick = () => {
+        const id = btn.dataset.id;
+        const idx = compareSet.indexOf(id);
+        if (idx >= 0) compareSet.splice(idx,1);
+        else if (compareSet.length < 4) compareSet.push(id);
+        else { alert("You can compare up to 4 warehouses."); return; }
+        saveCompare(); renderListings();
+      };
+    });
+    const cycleImg = (btn, dir) => {
+      const card = btn.closest(".card");
+      const img = card && card.querySelector("img[data-images]");
+      if (!img) return;
+      let list; try { list = JSON.parse(img.dataset.images); } catch { return; }
+      if (!list || list.length < 2) return;
+      let i = parseInt(img.dataset.idx, 10) || 0;
+      i = (i + dir + list.length) % list.length;
+      img.dataset.idx = i;
+      img.src = list[i];
+    };
+    listEl.querySelectorAll(".card-arrow-prev").forEach(b => b.onclick = (e) => { e.preventDefault(); e.stopPropagation(); cycleImg(b, -1); });
+    listEl.querySelectorAll(".card-arrow-next").forEach(b => b.onclick = (e) => { e.preventDefault(); e.stopPropagation(); cycleImg(b, 1); });
+    listEl.querySelectorAll(".card-image-wrap").forEach(wrap => {
+      const arrows = wrap.querySelectorAll(".card-arrow-prev, .card-arrow-next");
+      if (!arrows.length) return;
+      const show = () => arrows.forEach(a => { a.style.opacity = "1"; a.style.pointerEvents = "auto"; });
+      const hide = () => arrows.forEach(a => { a.style.opacity = "0"; a.style.pointerEvents = "none"; });
+      wrap.addEventListener("mouseenter", show);
+      wrap.addEventListener("mouseleave", hide);
+    });
+  }
+  function wireSwitchActions() {
+    bannersEl.querySelectorAll('[data-action="switch"]').forEach(b => {
+      b.onclick = () => {
+        state.sizeUnit = b.dataset.uom;
+        const lim = SIZE_LIMITS[state.sizeUnit];
+        if (state.sizeInput < lim.min || state.sizeInput > lim.max) state.sizeInput = lim.min === 50 ? 100 : lim.min;
+        state.page = 1; renderListings();
+      };
+    });
+    bannersEl.querySelectorAll('[data-action="switch-and-types"]').forEach(b => {
+      b.onclick = () => {
+        state.sizeUnit = b.dataset.uom;
+        state.warehouseTypeFilters = [b.dataset.type];
+        const lim = SIZE_LIMITS[state.sizeUnit];
+        if (state.sizeInput < lim.min || state.sizeInput > lim.max) state.sizeInput = lim.min === 50 ? 100 : lim.min;
+        state.page = 1; renderTypeChips(); renderListings();
+      };
+    });
+  }
+
+  /* ----- Boot --------------------------------------------------- */
+  renderTypeChips();
+  syncUomTabs(); syncSizeStepper(); syncDuration();
+  renderListings();
+  renderCompareBar();
+})();
+</script>
+
+</body>
+</html>

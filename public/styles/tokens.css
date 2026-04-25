@@ -1,0 +1,120 @@
+/* ============================================================
+   Cargoz — Design tokens (single source of truth).
+   Linked from every page. Per-page <style> blocks act as
+   page-specific overrides on top of these tokens.
+
+   Display font: Manrope (free Gilroy stand-in until brand
+   font is licensed). Body font: Lato (per brand spec).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  /* ----- Brand colors (logo only — never as primary UI) ----- */
+  --primary-500: #7957FF;          /* logo mark */
+  --secondary-500: #40BCAA;        /* logo triangle */
+  --secondary-600: #3AAB9B;        /* hover state */
+  --logo-black: #231F20;           /* wordmark */
+
+  /* ----- Text scale ----- */
+  --text-900: #0F172B;
+  --text-700: #314158;
+  --text-500: #62748E;
+  --text-300: #94A3B8;
+  --text-100: #E4E8ED;
+
+  /* ----- Surfaces ----- */
+  --white: #FFFFFF;
+  --bg-50: #F8FAFC;
+  --bg-100: #F1F5F9;
+
+  /* ----- Status ----- */
+  --star: #F59E0B;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+
+  /* ----- Type families ----- */
+  --font-display: 'Manrope', 'Gilroy', system-ui, sans-serif;
+  --font-body: 'Lato', system-ui, sans-serif;
+
+  /* ----- Type scale (px) ----- */
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;       /* min body — never go smaller */
+  --fs-18: 18px;
+  --fs-20: 20px;
+  --fs-24: 24px;
+  --fs-28: 28px;
+  --fs-32: 32px;
+  --fs-40: 40px;
+  --fs-48: 48px;
+  --fs-56: 56px;
+  --fs-64: 64px;
+
+  /* ----- Spacing ----- */
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-20: 20px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-40: 40px;
+  --sp-48: 48px;
+  --sp-64: 64px;
+  --sp-80: 80px;
+
+  /* ----- Radius ----- */
+  --r-4: 4px;
+  --r-8: 8px;
+  --r-12: 12px;
+  --r-16: 16px;
+  --r-pill: 999px;
+
+  /* ----- Shadows ----- */
+  --shadow-nav: 1px 2px 8px 0px rgba(29,41,61,0.04), -1px 2px 8px 0px rgba(29,41,61,0.04);
+  --shadow-card: 1px 2px 8px 0px rgba(29,41,61,0.04), -1px 2px 8px 0px rgba(29,41,61,0.04);
+  --shadow-card-hover: 0 8px 24px rgba(15,23,43,0.08);
+  --shadow-badge: 0px 2px 8px 0px rgba(0,0,0,0.1);
+  --shadow-btn: 0px 1px 0.5px 0px rgba(29,41,61,0.02);
+
+  /* ----- Layout ----- */
+  --container-max: 1280px;
+  --container-pad: 80px;
+}
+
+/* ----- Base reset (idempotent — pages can override) ----- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--text-900);
+  min-width: 1440px;
+  overflow-x: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ----- Display font: applies to all heading elements and
+        any element marked .t-display. Per-page heading-class
+        rules (e.g. .hero-h1, .wh-name) explicitly set Lato in
+        the prototype — !important here ensures the brand
+        display font wins until those legacy declarations are
+        cleaned up. ----- */
+h1, h2, h3, h4, h5, h6,
+.hero-h1, .hero-h2, .hero-h3,
+.wh-name, .section-title, .display-text,
+.t-display {
+  font-family: var(--font-display) !important;
+  color: var(--text-900);
+  letter-spacing: -0.01em;
+}
+
+/* ----- Container ----- */
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}

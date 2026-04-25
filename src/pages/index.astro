@@ -1,21 +1,714 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Navbar from "../components/layout/Navbar.astro";
-import Footer from "../components/layout/Footer.astro";
-import Hero from "../components/marketing/Hero.tsx";
-import ValueProps from "../components/marketing/ValueProps.astro";
-import HowItWorks from "../components/marketing/HowItWorks.astro";
-import ClientLogos from "../components/marketing/ClientLogos.astro";
-import ClosingCta from "../components/marketing/ClosingCta.astro";
 ---
-<BaseLayout title="Cargoz — Warehouse marketplace UAE">
-  <Navbar />
-  <main>
-    <Hero client:load />
-    <ClientLogos />
-    <ValueProps />
-    <HowItWorks />
-    <ClosingCta />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cargoz — Warehouse Marketplace UAE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="stylesheet" href="/styles/utilities.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary-500: #7957FF;
+      --secondary-500: #40BCAA;
+      --secondary-600: #3AAB9B;
+      --text-900: #0F172B;
+      --text-700: #314158;
+      --text-500: #62748E;
+      --text-100: #E4E8ED;
+      --white: #FFFFFF;
+      --shadow-nav: 1px 2px 8px 0px rgba(29,41,61,0.04), -1px 2px 8px 0px rgba(29,41,61,0.04);
+      --shadow-card: 1px 2px 8px 0px rgba(29,41,61,0.04), -1px 2px 8px 0px rgba(29,41,61,0.04);
+      --shadow-badge: 0px 2px 8px 0px rgba(0,0,0,0.1);
+      --shadow-btn: 0px 1px 0.5px 0px rgba(29,41,61,0.02);
+    }
+
+    .inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    html, body {
+      font-family: 'Lato', sans-serif;
+      background: var(--white);
+      color: var(--text-900);
+      min-width: 1440px;
+      overflow-x: auto;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────── */
+    .header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 80px;
+      background: var(--white);
+      box-shadow: var(--shadow-nav);
+      z-index: 100;
+    }
+    .header .inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo img {
+      height: 32px;
+      width: 125px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-item span {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: var(--text-700);
+      white-space: nowrap;
+    }
+
+    .nav-chevron {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-chevron svg {
+      width: 10px;
+      height: 6px;
+      fill: none;
+      stroke: var(--text-700);
+      stroke-width: 1.5;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .btn-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-900);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .btn-login {
+      height: 40px;
+      padding: 0 10px;
+      border-radius: 16px;
+      border: none;
+      background: transparent;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: var(--text-900);
+      cursor: pointer;
+      box-shadow: var(--shadow-btn);
+      white-space: nowrap;
+    }
+
+    .btn-list {
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 12px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.25px;
+      color: var(--text-900);
+      cursor: pointer;
+      box-shadow: var(--shadow-btn);
+      white-space: nowrap;
+    }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      padding-top: 80px;
+      min-height: 100vh;
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      height: 620px;
+    }
+
+    /* Left column */
+    .hero-left {
+      position: absolute;
+      left: 80px;
+      top: 97px;
+      width: 624px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-text-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hero-eyebrow {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      background: linear-gradient(177.73deg, var(--secondary-500) 0%, var(--secondary-600) 98.48%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-headline {
+      font-size: 45px;
+      font-weight: 700;
+      line-height: 52px;
+      letter-spacing: 0px;
+      color: var(--text-900);
+    }
+
+    .hero-subtext {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      color: var(--text-500);
+    }
+
+    /* Search bar */
+    .search-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* ─── SEARCH PILL (shared with listings) ─────────── */
+    .search-pill {
+      width: 100%;
+      height: 72px;
+      background: var(--white);
+      border: 1px solid var(--text-100);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      padding-right: 8px;
+    }
+    .search-field {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+    }
+    .search-field-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      color: var(--secondary-500);
+    }
+    .search-field-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--secondary-500);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .search-field-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .search-field-label {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      color: var(--text-500);
+    }
+    .search-field-value {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .search-field-value span {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 22px;
+      letter-spacing: 0.25px;
+      color: var(--text-900);
+      white-space: nowrap;
+    }
+    .search-field-value svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-700);
+      fill: none;
+      stroke-width: 1.5;
+    }
+    .search-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--text-100);
+      flex-shrink: 0;
+    }
+    .search-strip-btn {
+      height: 56px;
+      padding: 0 24px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(156deg, var(--secondary-500) 0%, var(--secondary-600) 100%);
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .search-strip-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    /* OR divider */
+    .or-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .or-line {
+      width: 100px;
+      height: 1px;
+      background: var(--text-100);
+    }
+
+    .or-text {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      color: var(--text-500);
+      text-align: center;
+    }
+
+    /* Match CTA */
+    .match-cta-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .match-cta {
+      border: 1px solid var(--primary-500);
+      border-radius: 16px;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      background: transparent;
+      text-decoration: none;
+    }
+
+    .match-cta-inner {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .match-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .match-cta-text {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      background: linear-gradient(174.77deg, var(--primary-500) 0%, var(--secondary-500) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+
+    .match-subtitle {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      color: var(--text-500);
+      white-space: nowrap;
+    }
+
+    /* ─── RIGHT IMAGE ─────────────────────────────────────── */
+    .hero-right {
+      position: absolute;
+      left: 760px;
+      top: 88px;
+      width: 515px;
+      height: 342px;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 608px;
+      height: 342px;
+      object-fit: cover;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Floating badges */
+    .badge {
+      position: absolute;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow-badge);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      white-space: nowrap;
+    }
+
+    .badge-value {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0.1px;
+      color: var(--text-900);
+    }
+
+    .badge-label {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      color: var(--text-500);
+    }
+
+    .badge-1 { left: 720px; top: 137px; }
+    .badge-2 { left: 1200px; top: 183px; }
+    .badge-3 { left: 900px; top: 391px; }
+
+    /* ─── GOODS TYPE ROW ──────────────────────────────────── */
+    .goods-row {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 490px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .goods-label {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      color: var(--text-500);
+      white-space: nowrap;
+    }
+
+    .goods-chips {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chip {
+      height: 32px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--text-100);
+      background: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: 0.4px;
+      color: var(--text-900);
+      cursor: pointer;
+      box-shadow: var(--shadow-btn);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+    }
+
+    .chip:hover {
+      border-color: var(--secondary-500);
+      color: var(--secondary-500);
+    }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  .footer .inner { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+  .footer {
+    background: var(--text-900);
+    padding: 80px 0 32px;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr 1.2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+  .footer-brand { display: flex; flex-direction: column; gap: 20px; }
+  .footer-logo {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 28px; font-weight: 700; color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .footer-tagline {
+    font-size: 16px; color: rgba(255,255,255,0.55);
+    line-height: 1.5; max-width: 260px;
+  }
+  .footer-cities { display: flex; flex-wrap: wrap; gap: 8px; max-width: 280px; }
+  .footer-city-chip {
+    display: inline-flex; align-items: center;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    font-size: 14px; color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: border-color .12s, background .12s, color .12s;
+  }
+  .footer-city-chip:hover { border-color: var(--secondary-500); background: rgba(64,188,170,0.1); color: var(--white); }
+  .footer-col-title {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 24px;
+  }
+  .footer-link {
+    display: block;
+    font-size: 16px; color: rgba(255,255,255,0.75);
+    padding: 8px 0; text-decoration: none;
+    transition: color .12s;
+  }
+  .footer-link:hover { color: var(--secondary-500); }
+  .footer-divider { border: 0; border-top: 1px solid rgba(255,255,255,0.08); margin: 0; }
+  .footer-browse { padding: 40px 0; }
+  .footer-browse-title {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); margin-bottom: 20px;
+  }
+  .footer-browse-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .footer-select {
+    appearance: none; -webkit-appearance: none;
+    width: 100%; height: 52px; padding: 0 44px 0 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 12px;
+    font-family: 'Lato', sans-serif; font-size: 16px; color: var(--white);
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='rgba(255,255,255,0.6)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat; background-position: right 20px center;
+    transition: border-color .12s, background .12s;
+  }
+  .footer-select option { background: var(--text-900); color: var(--white); }
+  .footer-select:hover { border-color: var(--secondary-500); background: rgba(64,188,170,0.06); }
+  .footer-select:focus { outline: none; border-color: var(--secondary-500); }
+  .footer-bottom {
+    padding-top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px; color: rgba(255,255,255,0.45);
+  }
+  .footer-legal { display: flex; gap: 32px; }
+  .footer-legal a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color .12s; }
+  .footer-legal a:hover { color: var(--white); }
+  </style>
+</head>
+<body>
+
+  <!-- ─── HEADER ───────────────────────────────────────── -->
+  <header class="header" data-cargoz-component="navbar"></header>
+
+  <!-- ─── HERO ─────────────────────────────────────────── -->
+  <main class="hero">
+    <div class="hero-inner">
+
+      <!-- Left column -->
+      <div class="hero-left">
+        <div class="hero-text">
+          <div class="hero-text-inner">
+            <p class="hero-eyebrow">Marketplace · Month-to-month · UAE</p>
+            <h1 class="hero-headline">Warehouse space, unbundled.</h1>
+          </div>
+          <p class="hero-subtext">Browse live inventory from JAFZA to Ajman. Pay per month, switch on a month's notice, see the rate card before you enquire.</p>
+        </div>
+
+        <div class="search-wrapper">
+          <!-- Search pill (shared with listings) -->
+          <div class="search-pill">
+            <div class="search-field">
+              <span class="search-field-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </span>
+              <div class="search-field-text">
+                <span class="search-field-label">What to store</span>
+                <div class="search-field-value">
+                  <span>General Cargo</span>
+                  <svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9" /></svg>
+                </div>
+              </div>
+            </div>
+            <div class="search-divider"></div>
+            <div class="search-field">
+              <span class="search-field-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div class="search-field-text">
+                <span class="search-field-label">Where to store</span>
+                <div class="search-field-value">
+                  <span>Dubai</span>
+                  <svg viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9" /></svg>
+                </div>
+              </div>
+            </div>
+            <a href="/warehouses" class="search-strip-btn">
+              Search
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </a>
+          </div>
+
+          <!-- OR -->
+          <div class="or-row">
+            <div class="or-line"></div>
+            <span class="or-text">or</span>
+            <div class="or-line"></div>
+          </div>
+
+          <!-- Match CTA -->
+          <div class="match-cta-wrapper">
+            <a class="match-cta" href="#">
+              <div class="match-cta-inner">
+                <img class="match-icon" src="https://www.figma.com/api/mcp/asset/0ca3522f-ea54-4cc7-b1b1-c0b7b15170a6" alt="" />
+                <span class="match-cta-text">Have us match warehouses for you</span>
+              </div>
+            </a>
+            <span class="match-subtitle">2–3 hand-picked options in 2 hours</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right image -->
+      <div class="hero-right">
+        <img src="https://www.figma.com/api/mcp/asset/f6b668e2-0e52-40b9-9b14-9885855e8bc6" alt="Warehouse interior" />
+      </div>
+
+      <!-- Floating badges -->
+      <div class="badge badge-1">
+        <span class="badge-value">24 hr</span>
+        <span class="badge-label">move in available</span>
+      </div>
+      <div class="badge badge-2">
+        <span class="badge-value">30%</span>
+        <span class="badge-label">less than direct lease</span>
+      </div>
+      <div class="badge badge-3">
+        <span class="badge-value">500+</span>
+        <span class="badge-label">verified warehouses</span>
+      </div>
+
+      <!-- Goods type row -->
+      <div class="goods-row">
+        <span class="goods-label">Search by goods type</span>
+        <div class="goods-chips">
+          <button class="chip">General Cargo</button>
+          <button class="chip">Food &amp; Bev</button>
+          <button class="chip">Medical</button>
+          <button class="chip">Pharma</button>
+        </div>
+      </div>
+
+    </div>
   </main>
-  <Footer />
-</BaseLayout>
+
+<!-- ─── FOOTER ──────────────────────────── -->
+<footer class="footer" data-cargoz-component="footer"></footer>
+
+<script is:inline src="/scripts/components.js"></script>
+</body>
+</html>
