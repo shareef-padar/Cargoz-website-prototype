@@ -1,0 +1,22 @@
+---
+import { VALUE_PROPS } from "../../data/valueProps";
+---
+<section class="bg-bg-50 py-24">
+  <div class="max-w-[1280px] mx-auto px-20">
+    <div class="text-center mb-14">
+      <span class="text-xs font-bold uppercase tracking-widest text-secondary-500">Why Cargoz</span>
+      <h2 class="text-5xl font-bold text-text-900 mt-3">Built for the way you actually run logistics.</h2>
+    </div>
+    <div class="grid grid-cols-3 gap-6">
+      {VALUE_PROPS.map(v => (
+        <article class="bg-white rounded-2xl p-8 border border-text-100 shadow-card">
+          <div class="w-12 h-12 rounded-xl bg-secondary-500/10 grid place-items-center text-secondary-500 mb-5">
+            <span class="text-xl font-bold">✓</span>
+          </div>
+          <h3 class="text-2xl font-bold text-text-900 mb-3">{v.title}</h3>
+          <p class="text-base text-text-700 leading-relaxed">{v.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
