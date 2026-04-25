@@ -14,3 +14,5 @@ pnpm build        # production build
 ## Deploy
 
 Push to `main` → Vercel auto-deploys to staging.
+
+Staging: https://cargoz-website-prototype-hu8dj1829-shareef-padars-projects.vercel.app
