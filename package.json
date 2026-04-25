@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check && biome check src",
+    "format": "biome format --write src"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
@@ -21,5 +23,10 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "tailwindcss": "^4.2.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@biomejs/biome": "2.4.13",
+    "typescript": "^6.0.3"
   }
 }
