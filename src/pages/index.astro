@@ -1,13 +1,13 @@
 ---
 import "../styles/globals.css";
+import HelloIsland from "../components/HelloIsland.tsx";
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Cargoz — tokens smoke test</title>
+    <title>Cargoz — React island smoke test</title>
   </head>
-  <body class="bg-bg-50 text-text-900">
-    <h1 class="text-4xl text-secondary-500">Tokens working</h1>
-    <p class="text-base text-text-700 mt-4">Lato body, Manrope heading.</p>
+  <body class="bg-bg-50 text-text-900 p-10">
+    <HelloIsland client:load />
   </body>
 </html>
