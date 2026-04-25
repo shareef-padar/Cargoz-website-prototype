@@ -1,1 +1,61 @@
-/* Cargoz design tokens — populated in Task 3 */
+@theme {
+  /* Brand colors (logo-only — never as primary UI fill) */
+  --color-primary-500: #7957FF;
+  --color-secondary-500: #40BCAA;
+  --color-secondary-600: #3AAB9B;
+  --color-logo-black: #231F20;
+
+  /* Text */
+  --color-text-900: #0F172B;
+  --color-text-700: #314158;
+  --color-text-500: #62748E;
+  --color-text-300: #94A3B8;
+  --color-text-100: #E4E8ED;
+
+  /* Surfaces */
+  --color-white: #FFFFFF;
+  --color-bg-50: #F8FAFC;
+  --color-bg-100: #F1F5F9;
+
+  /* Status */
+  --color-star: #F59E0B;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* Type families */
+  --font-display: 'Manrope', system-ui, sans-serif;
+  --font-body: 'Lato', system-ui, sans-serif;
+
+  /* Type scale */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 28px;
+  --text-4xl: 32px;
+  --text-5xl: 40px;
+  --text-6xl: 48px;
+  --text-7xl: 56px;
+  --text-8xl: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-nav: 1px 2px 8px 0 rgba(29,41,61,0.04), -1px 2px 8px 0 rgba(29,41,61,0.04);
+  --shadow-card: 1px 2px 8px 0 rgba(29,41,61,0.04), -1px 2px 8px 0 rgba(29,41,61,0.04);
+  --shadow-card-hover: 0 8px 24px rgba(15,23,43,0.08);
+  --shadow-badge: 0 2px 8px 0 rgba(0,0,0,0.1);
+  --shadow-btn: 0 1px 0.5px 0 rgba(29,41,61,0.02);
+
+  /* Container */
+  --container-max: 1280px;
+  --container-pad: 80px;
+}
