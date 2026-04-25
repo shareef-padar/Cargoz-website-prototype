@@ -20,6 +20,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.1.9",
+    "astro-icon": "^1.1.5",
     "framer-motion": "^12.38.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@biomejs/biome": "2.4.13",
+    "@iconify-json/hugeicons": "^1.2.26",
     "typescript": "^6.0.3"
   }
 }

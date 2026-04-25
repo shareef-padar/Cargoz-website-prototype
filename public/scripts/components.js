@@ -12,21 +12,21 @@ const CARGOZ_NAVBAR_HTML = `
   <nav class="header-nav">
     <a class="nav-item" href="/warehouses">
       <span>See All Warehouses</span>
-      <span class="nav-chevron"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1" /></svg></span>
+      <span class="nav-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 9s-4.419 6-6 6s-6-6-6-6"/></svg></span>
     </a>
     <a class="nav-item" href="#">
       <span>Instant Storage</span>
-      <span class="nav-chevron"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1" /></svg></span>
+      <span class="nav-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 9s-4.419 6-6 6s-6-6-6-6"/></svg></span>
     </a>
     <a class="nav-item" href="#">
       <span>Storage Calculator</span>
-      <span class="nav-chevron"><svg viewBox="0 0 10 6"><polyline points="1,1 5,5 9,1" /></svg></span>
+      <span class="nav-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18 9s-4.419 6-6 6s-6-6-6-6"/></svg></span>
     </a>
     <a class="nav-item" href="#"><span>How it Works</span></a>
   </nav>
   <div class="header-actions">
     <button class="btn-icon" aria-label="Saved warehouses">
-      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.41 19.968C7.59 17.858 2 13.035 2 8.694C2 5.826 4.105 3.5 7 3.5c1.5 0 3 .5 5 2.5c2-2 3.5-2.5 5-2.5c2.895 0 5 2.326 5 5.194c0 4.34-5.59 9.164-8.41 11.274c-.95.71-2.23.71-3.18 0"/></svg>
     </button>
     <button class="btn-login">Login</button>
     <button class="btn-list">List Your Warehouse</button>
