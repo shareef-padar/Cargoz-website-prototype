@@ -1,0 +1,76 @@
+---
+import { SITE } from "../../data/site";
+const explore = [
+  { label: "Get Matched", href: "#" },
+  { label: "See All Warehouses", href: "/warehouses" },
+  { label: "How to Choose a Warehouse", href: "#" },
+  { label: "Types of Warehouses", href: "#" },
+  { label: "Storage Calculator", href: "#" },
+  { label: "How We Verify Warehouses", href: "#" }
+];
+const about = [
+  { label: "About Us", href: "/about" },
+  { label: "How It Works", href: "#" },
+  { label: "Why Cargoz", href: "#" },
+  { label: "Contact Us", href: "#" }
+];
+const resources = [
+  { label: "FAQs", href: "#" },
+  { label: "Blog", href: "#" },
+  { label: "Glossary", href: "#" }
+];
+---
+<footer class="bg-text-900 text-white/70 pt-20 pb-8">
+  <div class="max-w-[1280px] mx-auto px-20">
+    <div class="grid grid-cols-[1.4fr_1fr_1.2fr_1.2fr_1fr_1fr] gap-12 mb-16">
+      <div class="flex flex-col gap-5">
+        <div class="flex items-center gap-2 text-2xl font-bold text-white tracking-tight">
+          <span>cargoz</span>
+        </div>
+        <p class="text-base text-white/55 leading-snug max-w-[260px]">{SITE.tagline}</p>
+        <div class="flex flex-wrap gap-2 max-w-[280px]">
+          {SITE.cities.map(c => (
+            <a href="#" class="inline-flex items-center px-3.5 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-white/85 hover:border-secondary-500 hover:bg-secondary-500/10 hover:text-white">{c}</a>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-white/45 mb-6">About Cargoz</div>
+        {about.map(l => <a href={l.href} class="block text-base text-white/75 py-2 hover:text-secondary-500">{l.label}</a>)}
+      </div>
+
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-white/45 mb-6">Explore</div>
+        {explore.map(l => <a href={l.href} class="block text-base text-white/75 py-2 hover:text-secondary-500">{l.label}</a>)}
+      </div>
+
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-white/45 mb-6">Instant Storage Solutions</div>
+        <a href="#" class="block text-base text-white/75 py-2 hover:text-secondary-500">Fixed Area Storage</a>
+        <a href="#" class="block text-base text-white/75 py-2 hover:text-secondary-500">Lockable Units Storage</a>
+      </div>
+
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-white/45 mb-6">Locations</div>
+        {SITE.cities.map(c => <a href="#" class="block text-base text-white/75 py-2 hover:text-secondary-500">{c}</a>)}
+      </div>
+
+      <div>
+        <div class="text-xs font-bold uppercase tracking-widest text-white/45 mb-6">Resources</div>
+        {resources.map(l => <a href={l.href} class="block text-base text-white/75 py-2 hover:text-secondary-500">{l.label}</a>)}
+      </div>
+    </div>
+
+    <hr class="border-0 border-t border-white/10 m-0" />
+
+    <div class="pt-8 flex justify-between items-center text-sm text-white/45">
+      <span>© 2026 Cargoz. All rights reserved.</span>
+      <div class="flex gap-8">
+        <a href="#" class="text-white/55 hover:text-white">Terms of Service</a>
+        <a href="#" class="text-white/55 hover:text-white">Privacy Policy</a>
+        <a href="#" class="text-white/55 hover:text-white">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
